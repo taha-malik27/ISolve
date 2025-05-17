@@ -1,0 +1,7 @@
+.hero-container {
+    height: 110dvh;
+    padding: 0 5%;
+    background-color: #2f2f2f; /* Replace later with background-image */
+    position: relative;
+    padding-top: 40px;
+}
