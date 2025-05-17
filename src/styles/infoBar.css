@@ -1,23 +1,23 @@
 /* src/styles/infoBar.css */
 
 .info-bar {
+    position: absolute;       /* out of flow, relative to that parent */
+    top: 80%;                 /* 40% down from the top of the parent block */
+    left: 50%;
+    transform: translateX(-50%);  /* center horizontally */
+
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #1f2937;    /* dark bg */
+
+    background-color: #1f2937;
     padding: 1rem 2rem;
-    position: absolute;
-    border-radius:  10px;
-    /* your vertical offset */
-    margin-top: 55%;
+    border-radius: 10px;
 
-    /* —— new: horizontally center —— */
-    left: 50%;
-    transform: translateX(-50%);
-
-    height: 15dvh;
     width: 90%;
+    height: 15dvh;
 }
+
 
 
 .info-bar__item {
@@ -36,7 +36,8 @@
 
 .info-bar__label {
     color: #fff;
-    font-size: 1.5rem;
+    /* never below 1rem, never above 1.5rem, but scale with vw in between */
+    font-size: clamp(1rem, 2vw, 1.5rem);
     font-weight: 1000;
     white-space: pre-line;
     text-align: center;

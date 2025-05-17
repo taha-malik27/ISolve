@@ -10,7 +10,7 @@ const HeroSection = () => {
         <div className="hero-container text-white">
             <NavBar className="mt-auto" />
 
-            <div className="d-flex flex-column justify-content-center align-items-start px-4" style = {{height: "75%"}}>
+            <div className="d-flex flex-column justify-content-center align-items-start px-4 position-relative" style = {{height: "75%"}}>
                 <h1 className="display-1 static-glow">Bring Your Brand <br /> to Life Online</h1>
                 <p className="lead mb-4 ">Professional web design, development & support under one roof</p>
 
