@@ -1,6 +1,6 @@
 // src/components/NavBar.jsx
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navbar, Container, Nav, Button } from 'react-bootstrap';
 import '../../styles/navBar.css';
 import logo from '../../assets/logo.png';
@@ -8,12 +8,29 @@ import '../../App.css';
 import Glow from './glow';
 import '../../index.css';
 
-const SCROLL_STOP = 40; // px scrolled before navbar “sticks”
+const SCROLL_STOP      = 40;   // navbar sticks at 40px from the top
+const SLIDE_START      = 250;  // begin sliding after 100px of scroll
+const SLIDE_DISTANCE   = 120;   // complete slide over the next 80px
+const SLIDE_MULTIPLIER = 1;  // slide up by 100% of its height
 
 const NavBar = () => {
-    const [glowActive, setGlowActive] = useState(false);
-    const [buttonGlow, setButtonGlow] = useState(false);
+    const [glowActive, setGlowActive]       = useState(false);
+    const [buttonGlow, setButtonGlow]       = useState(false);
+    const [slideFraction, setSlideFraction] = useState(0);
     const isMobile = window.innerWidth < 768;
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const y      = window.scrollY;
+            const passed = Math.max(y - SLIDE_START, 0);
+            const frac   = Math.min(passed / SLIDE_DISTANCE, 1);
+            setSlideFraction(frac);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        handleScroll(); // initialize on mount
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     return (
         <Navbar
@@ -21,9 +38,12 @@ const NavBar = () => {
             className="mx-auto"
             style={{
                 position: 'sticky',
-                top: `${SCROLL_STOP}px`,
-                width: '100%',
-                zIndex: 2000
+                top:      `${SCROLL_STOP}px`,
+                width:    '100%',
+                zIndex:   2000,
+                transform:       `translateY(-${slideFraction * SLIDE_MULTIPLIER * 125}%)`,
+                transition:      'transform 0.25s ease',
+                pointerEvents:   slideFraction >= 1 ? 'none' : 'auto'
             }}
         >
             <Container fluid className="px-4">
@@ -57,8 +77,8 @@ const NavBar = () => {
                             style={{ zIndex: 1 }}
                         >
                             <Nav className="d-flex align-items-center flex-column flex-lg-row">
-                                <Nav.Link href="#home" className="text-white px-3 static-glow">Home</Nav.Link>
-                                <Nav.Link href="#about" className="text-white px-3 static-glow">About</Nav.Link>
+                                <Nav.Link href="#home"     className="text-white px-3 static-glow">Home</Nav.Link>
+                                <Nav.Link href="#about"    className="text-white px-3 static-glow">About</Nav.Link>
                                 <Nav.Link href="#projects" className="text-white px-3 static-glow">Our Projects</Nav.Link>
                             </Nav>
                         </div>

@@ -1,4 +1,5 @@
-// Glow.jsx
+// src/components/glow.jsx
+
 import React, { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
@@ -6,19 +7,37 @@ const Glow = ({
                   isActive,
                   color = '#000',
                   time = 2,
-                  radius = 60        // <-- new prop, default to 28px
+                  radius = 60,    // corner radius
               }) => {
+    // Always call hooks at top‐level:
     const shapeRef = useRef(null);
     const [length, setLength] = useState(0);
 
+    // Detect mobile viewport
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+
+    // Only compute total length if not mobile
     useEffect(() => {
+        if (isMobile) return;
+
         if (shapeRef.current) {
-            setLength(shapeRef.current.getTotalLength());
+            try {
+                const total = shapeRef.current.getTotalLength();
+                setLength(total);
+            } catch (err) {
+                console.warn('Glow tracer disabled:', err);
+                setLength(0);
+            }
         }
-    }, []);
+    }, [isMobile]);
+
+    // Early return for mobile — hooks have already been called
+    if (isMobile) {
+        return null;
+    }
 
     const dash = 150;
-    const gap = length - dash;
+    const gap = Math.max(length - dash, 0);
 
     return (
         <svg

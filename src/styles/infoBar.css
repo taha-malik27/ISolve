@@ -1,0 +1,43 @@
+/* src/styles/infoBar.css */
+
+.info-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1f2937;    /* dark bg */
+    padding: 1rem 2rem;
+    position: absolute;
+    border-radius:  10px;
+    /* your vertical offset */
+    margin-top: 55%;
+
+    /* —— new: horizontally center —— */
+    left: 50%;
+    transform: translateX(-50%);
+
+    height: 15dvh;
+    width: 90%;
+}
+
+
+.info-bar__item {
+    display: flex;
+    align-items: center;
+}
+
+.info-bar__indicator {
+    width: 10px;
+    height: 10dvh;
+    background-color: #3b82f6;    /* blue accent */
+    border-radius: 5px;
+    margin-right: 2rem;
+    margin-left: 0.75rem;
+}
+
+.info-bar__label {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 1000;
+    white-space: pre-line;
+    text-align: center;
+}
