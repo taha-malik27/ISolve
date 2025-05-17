@@ -1,0 +1,14 @@
+/* index.css */
+body {
+  margin: 0;
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.static-glow {
+  transition: filter 0.5s ease-in-out;
+}
+
+.static-glow:hover {
+  filter: drop-shadow(0 0 8px white);
+}
