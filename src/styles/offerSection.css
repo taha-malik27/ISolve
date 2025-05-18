@@ -2,6 +2,7 @@
     position: relative;
     height: 85dvh;
     padding: 0 5%;
+
     background-color: rgba(14, 95, 246, 0.75);
     overflow: hidden;
     /* two backgrounds: your image + a “border” gradient */
@@ -18,7 +19,7 @@
         • gradient = 4px wide, auto height
     */
     background-size:
-            50% auto,
+            50% 100%,
             10px auto;
 
 
@@ -68,6 +69,7 @@
     margin-right: 3.5%;
     font-weight: bolder;
     color: aliceblue;
+
 }
 
 .body{

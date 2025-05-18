@@ -104,13 +104,13 @@ const NavBar = () => {
             </Container>
 
             {/* Mobile Contact Button (below pill) */}
-            <div className="container-fluid d-flex d-lg-none justify-content-center mt-3 px-4">
+            <div className="container-fluid d-flex d-lg-none justify-content-center mt-3 px-4 text">
                 <Button
                     variant="primary"
-                    className="fw-bold rounded-pill px-4 py-2"
+                    className="fw-bold rounded-pill px-4 py-2 text"
                     style={{ height: '56px' }}
                 >
-                    <span className="static-glow">Contact</span>
+                    <span className="static-glow text">Contact</span>
                 </Button>
             </div>
         </Navbar>
