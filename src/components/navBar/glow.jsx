@@ -36,7 +36,7 @@ const Glow = ({
         return null;
     }
 
-    const dash = 150;
+    const dash = 300;
     const gap = Math.max(length - dash, 0);
 
     return (

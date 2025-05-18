@@ -92,7 +92,7 @@ const NavBar = () => {
                     onMouseEnter={() => setButtonGlow(true)}
                     onMouseLeave={() => setButtonGlow(false)}
                 >
-                    <Glow isActive={buttonGlow} color={"#59c3ff"} time={2} radius={100} />
+                    <Glow isActive={buttonGlow} color={"#59c3ff"} time={2} radius={175} />
                     <Button
                         variant="primary"
                         className="fw-bold rounded-pill px-4 py-2 text "

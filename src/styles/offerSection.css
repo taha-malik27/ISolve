@@ -1,46 +1,40 @@
+/* styles/offerSection.css */
+
+/* ──────────────────────────────────────────────────────── */
+/* DESKTOP LAYOUT & ANIMATIONS                            */
+/* ──────────────────────────────────────────────────────── */
+
 .offer-container {
     position: relative;
     height: 85dvh;
     padding: 0 5%;
-
     background-color: rgba(14, 95, 246, 0.75);
-    overflow: hidden;
-    /* two backgrounds: your image + a “border” gradient */
+    overflow-x: hidden;
+    overflow-y: visible;
+    z-index: 0;
     background-image:
-            url("../assets/img2.png"),            /* 1) your image */
-            linear-gradient(to right, #616161, #616161);/* 2) a solid-black 1‑col strip */
-
-    /* don’t tile either */
+            url("../assets/img2.png"),
+            linear-gradient(to right, #616161, #616161);
     background-repeat: no-repeat, no-repeat;
-
-    /*
-      size them:
-        • image = 50% of container width, auto height
-        • gradient = 4px wide, auto height
-    */
-    background-size:
-            50% 100%,
-            10px auto;
-
-
-    /*
-      position them:
-        • image @ (0% from left, 70% from top)
-        • gradient @ (50% from left, 70% from top)
-          → sits exactly at the right edge of a 50%‑wide image
-    */
-    background-position:
-            0% 70%,
-            50% 70%;
+    background-size: 50% 100%, 10px auto;
+    background-position: 0% 70%, 50% 70%;
 }
 
-/* Initial state: off to the right & invisible */
+/* hide the mobile <img> on desktop */
+.offer-image-mobile {
+    display: none;
+}
+
+/* ── ANIMATION STATES ──────────────────────────────────── */
+
+/* Heading: slide down from above using margin */
 .heading {
     opacity: 0;
-    transform: translateY(-100%);
-    transition: transform 2s ease-out, opacity 0.6s ease-out;
-    z-index: -1;
-    /* your existing rules */
+    margin-top: -4rem;
+    transition:
+            margin-top 0.6s ease-out,
+            opacity     0.6s ease-out;
+    /* desktop styling */
     display: block;
     width: clamp(20%, 2vw, 25%);
     margin-left: auto;
@@ -55,13 +49,32 @@
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
-
-/* When in view, slide to natural position & fade in */
 .heading.slide-in {
     opacity: 1;
-    transform: translateX(0);
+    margin-top: 0;
 }
-.subtitle{
+
+/* Subtitle, body & button: slide up from below */
+.subtitle,
+.body,
+.lmButton {
+    opacity: 0;
+    transform: translateY(100%);
+    transition:
+            transform 0.6s ease-out,
+            opacity   0.6s ease-out;
+}
+.subtitle.slide-in,
+.body.slide-in,
+.lmButton.slide-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ── DESKTOP STYLING ──────────────────────────────────── */
+
+/* Subtitle */
+.subtitle {
     margin-top: 7.5%;
     font-size: clamp(1.3em, 2vw, 2rem);
     text-align: right;
@@ -69,10 +82,10 @@
     margin-right: 3.5%;
     font-weight: bolder;
     color: aliceblue;
-
 }
 
-.body{
+/* Body */
+.body {
     margin-top: 3%;
     font-family: "Montserrat", sans-serif;
     font-size: clamp(0.8rem, 2vw, 1.5rem);
@@ -81,33 +94,29 @@
     margin-right: 3.5%;
     color: aliceblue;
 }
-/* 1) Container: full‑width flex, no right margin here */
+
+/* Button container */
 .lmButton {
     display: flex;
     width: 100%;
     margin-top: 3%;
-    /* remove margin-right so it truly fills the row */
     margin-right: 0;
 }
 
-/* 2) Button: fixed size, auto‑push to right */
+/* Button */
 .lmButton .btn {
-    margin-left: auto;            /* pushes it to the right edge */
+    margin-left: auto;
     margin-right: 3.5%;
     height: 60px;
-    width: 200px;                 /* make it wider */
+    width: 200px;
     font-size: clamp(0.8rem, 2vw, 1.2rem);
     font-weight: bold;
 }
 
-/* hide the mobile <img> by default (desktop) */
-.offer-image-mobile {
-    display: none;
-}
-
-/* MOBILE-CENTRALIZED LAYOUT (≤768px) */
+/* ──────────────────────────────────────────────────────── */
+/* MOBILE OVERRIDES (≤ 768px)                              */
+/* ──────────────────────────────────────────────────────── */
 @media screen and (max-width: 768px) {
-    /* Container: no bg‑image, auto height, centered text */
     .offer-container {
         background-image: none;
         height: auto;
@@ -115,56 +124,40 @@
         text-align: center;
     }
 
-    /* Heading, subtitle, body & button wrapper all full‑width and centered */
+    .offer-image-mobile {
+        display: block;
+        width: 100%;
+        height: auto;
+        margin: 2rem auto 2rem;
+    }
+
+    .heading {
+        width: 90%;
+        margin: 0 auto 2%;
+        text-align: center;
+    }
 
     .subtitle,
     .body,
     .lmButton {
         width: 90%;
         margin: 2% auto;
-        text-align: center;    /* ensure all text is centered */
+        text-align: center;
     }
 
-    .heading{
-        width: 90%;
-        margin: 2% auto;
-        text-align: center;    /* ensure all text is centered */
-        margin-top: -2.5%;
-    }
-
-    /* More top margin on the button row */
     .lmButton {
-        margin-top: 4%;
+        display: block !important;
+        text-align: center !important;
+        margin-top: 4% !important;
     }
 
-    /* Stretch the button itself */
-    .lmButton .btn {
-        width: 80% !important;
-        max-width: 300px;
-    }
-
-    /* Show and center the image below everything */
-    /* Add this (or update the existing block) in your mobile media query */
-    .offer-image-mobile {
-        display: block;
-        width: 100%;
-        height: auto;
-        margin: 2rem auto 2rem;  /* top and bottom margin to give breathing room */
-    }
-
-}
-
-@media screen and (max-width: 768px) {
-    /* Override .lmButton on mobile only: drop the flex and center its content */
-    .lmButton {
-        display: block !important;     /* stop being a flex container */
-        text-align: center !important; /* center inline content */
-    }
-
-    /* And make sure the button itself behaves like an inline‑block */
     .lmButton .btn {
         display: inline-block !important;
-        margin: 0 auto !important;     /* extra safety, but inline‑block + text-align:center is enough */
+        margin: 0 auto !important;
+        width: 80% !important;
+        max-width: 300px;
+        height: auto !important;
+        padding: clamp(0.75rem, 3vw, 1rem)
+        clamp(1rem, 5vw, 1.25rem) !important;
     }
 }
-
