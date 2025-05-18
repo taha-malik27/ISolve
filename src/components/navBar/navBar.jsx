@@ -70,16 +70,16 @@ const NavBar = () => {
                         onMouseEnter={() => !isMobile && setGlowActive(true)}
                         onMouseLeave={() => !isMobile && setGlowActive(false)}
                     >
-                        {!isMobile && <Glow isActive={glowActive} time={3} />}
+                        {!isMobile && <Glow isActive={glowActive} time={3} color={"#ffffff"} />}
 
                         <div
                             className="bg-dark px-4 py-2 rounded-pill d-flex gap-3 position-relative flex-column flex-lg-row align-items-center justify-content-center justify-content-lg-start"
                             style={{ zIndex: 1 }}
                         >
                             <Nav className="d-flex align-items-center flex-column flex-lg-row">
-                                <Nav.Link href="#home"     className="text-white px-3 static-glow">Home</Nav.Link>
-                                <Nav.Link href="#about"    className="text-white px-3 static-glow">About</Nav.Link>
-                                <Nav.Link href="#projects" className="text-white px-3 static-glow">Our Projects</Nav.Link>
+                                <Nav.Link href="#home"     className="text-white px-3 static-glow text">Home</Nav.Link>
+                                <Nav.Link href="#about"    className="text-white px-3 static-glow text">About</Nav.Link>
+                                <Nav.Link href="#projects" className="text-white px-3 static-glow text">Our Projects</Nav.Link>
                             </Nav>
                         </div>
                     </div>
@@ -87,18 +87,18 @@ const NavBar = () => {
 
                 {/* Desktop Contact Button (inline) */}
                 <div
-                    className="position-relative ms-5 d-none d-lg-inline-block"
+                    className="position-relative ms-5 d-none d-lg-inline-block text"
                     style={{ height: '56px' }}
                     onMouseEnter={() => setButtonGlow(true)}
                     onMouseLeave={() => setButtonGlow(false)}
                 >
-                    <Glow isActive={buttonGlow} color="#2364cc" time={2} radius={100} />
+                    <Glow isActive={buttonGlow} color={"#59c3ff"} time={2} radius={100} />
                     <Button
                         variant="primary"
-                        className="fw-bold rounded-pill px-4 py-2"
+                        className="fw-bold rounded-pill px-4 py-2 text "
                         style={{ height: '56px', position: 'relative', zIndex: 1 }}
                     >
-                        <span className="static-glow">Contact</span>
+                        <span className="static-glow text">Contact</span>
                     </Button>
                 </div>
             </Container>

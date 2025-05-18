@@ -1,10 +1,11 @@
 /* src/styles/infoBar.css */
 
+/* ── your existing desktop styles ───────────────────────────────────────── */
 .info-bar {
-    position: absolute;       /* out of flow, relative to that parent */
-    top: 80%;                 /* 40% down from the top of the parent block */
+    position: absolute;       /* out of flow, relative to parent */
+    top: 95%;
     left: 50%;
-    transform: translateX(-50%);  /* center horizontally */
+    transform: translateX(-50%);
 
     display: flex;
     justify-content: space-between;
@@ -18,8 +19,6 @@
     height: 15dvh;
 }
 
-
-
 .info-bar__item {
     display: flex;
     align-items: center;
@@ -28,17 +27,56 @@
 .info-bar__indicator {
     width: 10px;
     height: 10dvh;
-    background-color: #3b82f6;    /* blue accent */
+    background-color: #3b82f6;
     border-radius: 5px;
     margin-right: 2rem;
-    margin-left: 0.75rem;
+    margin-left: 2rem;
 }
 
 .info-bar__label {
     color: #fff;
-    /* never below 1rem, never above 1.5rem, but scale with vw in between */
-    font-size: clamp(1rem, 2vw, 1.5rem);
-    font-weight: 1000;
+    font-size: 1.5rem;
+    font-weight: 0;
     white-space: pre-line;
     text-align: center;
+}
+
+
+/* ── mobile overrides ─────────────────────────────────────────────────────── */
+@media (max-width: 767px) {
+    .info-bar {
+        position: static;           /* flow in document */
+        transform: none;
+        top: auto;
+        left: auto;
+
+        /* full‑width and auto height */
+        width: 100%;
+        height: auto;
+
+        /* stack items vertically */
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem 1.5rem;
+        margin-top: 1rem;           /* give a bit of breathing room */
+    }
+
+    .info-bar__item {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    .info-bar__indicator {
+        /* smaller, fixed height bar */
+        width: 6px;
+        height: 24px;
+        margin-right: 0.75rem;
+        margin-left: 0;
+    }
+
+    .info-bar__label {
+        /* scale down the text for mobile */
+        font-size: clamp(1rem, 2.5vw, 1.25rem);
+        text-align: left;
+    }
 }

@@ -1,7 +1,20 @@
+/* base styles */
 .hero-container {
-    height: 150dvh;
-    padding: 0 5%;
-    background-color: #2f2f2f; /* Replace later with background-image */
+    height: 130dvh;
+    padding: 39px 5% 0;
     position: relative;
-    padding-top: 39px;
+
+    background-color: #000;
+    background-image: url("../assets/img.png");
+    background-repeat: no-repeat;
+    background-size: 60% auto;
+    background-position: 60% 20%;
+}
+
+/* mobile: center background horizontally */
+@media screen and (max-width: 768px) {
+    .hero-container {
+        /* keep the vertical offset, but center on the x‑axis */
+        background-position: 35% 20%;
+    }
 }

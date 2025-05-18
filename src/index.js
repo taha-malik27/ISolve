@@ -5,7 +5,7 @@ import "./index.css";
 import App from './App';
 import reportWebVitals from './tests/reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import "@fontsource/montserrat"; // defaults to weight 400
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

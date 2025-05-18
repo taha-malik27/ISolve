@@ -1,7 +1,7 @@
 import React from "react";
-import NavBar from "./navBar/navBar"; // Adjust path if needed
-import "../styles/infoBar.css";
-import "../index.css"
+import NavBar from "../navBar/navBar"; // Adjust path if needed
+import "../../styles/infoBar.css";
+import "../../index.css"
 
 const items = [
     {label:"Pixel Perfect Designs"},
@@ -18,7 +18,7 @@ const InfoBar = () => {
             {items.map((item, idx) => (
             <div key={idx} className="info-bar__item">
                 <div className="info-bar__indicator"/>
-                <span className="info-bar__label hover-scale">{item.label}</span>
+                <span className="info-bar__label hover-scale text">{item.label}</span>
             </div>
             ))}
         </div>
