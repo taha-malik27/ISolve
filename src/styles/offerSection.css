@@ -131,9 +131,14 @@
         margin: 2rem auto 2rem;
     }
 
+    .offer-container {
+        /* remove any top padding so the heading can sit flush */
+        padding-top: 0;
+    }
+
     .heading {
         width: 90%;
-        margin: 0 auto 2%;
+        margin: 0 auto 2%;    /* no top gap, only bottom spacing */
         text-align: center;
     }
 

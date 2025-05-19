@@ -1,0 +1,124 @@
+/* ---------------------------------------------------
+   Custom flip‑card & layout styles
+   — import *after* Bootstrap’s CSS
+   --------------------------------------------------- */
+
+/* Container for the “Why Us” section */
+.whyUsSectionContainer {
+    display: grid;
+    height: 100dvh;
+    position: relative;
+    width: 100%;
+}
+
+/* Grid of flip‑cards */
+.reasonsContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding-top: 5%;
+    padding-inline: 10%;
+    gap: 1rem;
+    justify-items: center;
+    align-items: center;
+}
+
+/* Single‑column on narrower viewports */
+@media (max-width: 768px) {
+    .reasonsContainer {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ─────────────────────────────────────────────────── */
+/* Flip‑card base styles                               */
+/* ─────────────────────────────────────────────────── */
+
+/* Outer wrapper */
+.flip-card {
+    background-color: transparent;
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 500 / 350;
+    border: 1px solid #f1f1f1;
+    perspective: 1000px;
+    border-radius: 30px;
+}
+
+/* Inner 3D container */
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    border-radius: 30px;
+}
+
+/* Flip on hover (desktop) */
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Both front & back faces */
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: 30px;
+}
+
+/* Front face styling */
+.flip-card-front {
+    background-color: #bbb;
+    color: black;
+}
+
+/* Back face styling + centering container */
+.flip-card-back {
+    background-color: dodgerblue;
+    color: white;
+    transform: rotateY(180deg);
+
+    /* center content vertically & horizontally */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;        /* ← changed from flex-start */
+    box-sizing: border-box;
+}
+
+/* ─────────────────────────────────────────────────── */
+/* Dynamic header & body padding                      */
+/* ─────────────────────────────────────────────────── */
+
+/* Card header */
+.flip-card-back .cardHeader {
+    font-size: clamp(1rem, 2vw, 2rem);
+    line-height: 1.2;
+
+    /* larger default top-pad, but still fluid */
+    padding-top: clamp(1.25em, 1vw, 2em);
+    padding-bottom: 0.5em;
+
+    /* dynamic side‑padding: min 1.5rem, ideal 8%, max 3.5rem */
+    padding-inline: clamp(1.5rem, 8%, 3.5rem);
+
+    text-align: center;         /* center the lines of text */
+}
+
+/* Card body */
+.flip-card-back .cardBody {
+    font-size: clamp(0.25rem, 3vw, 1rem);
+
+    padding-top: clamp(1em, 1.5vw, 1.5em);
+    padding-bottom: 0.6em;
+
+    /* dynamic side‑padding: min 1.5rem, ideal 10%, max 4rem */
+    padding-inline: clamp(1.5rem, 10%, 4rem);
+
+    /* you can also text‑align:center here if you want paragraph centered */
+}
