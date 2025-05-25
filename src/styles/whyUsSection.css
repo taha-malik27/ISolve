@@ -1,50 +1,68 @@
-/* ---------------------------------------------------
-   Custom flip‑card & layout styles
-   — import *after* Bootstrap’s CSS
-   --------------------------------------------------- */
+/* src/styles/whyUsSection.css */
 
-/* Container for the “Why Us” section */
+/* ─────────────────────────────────────────────────── */
+/* Section container & video background (desktop)     */
+/* ─────────────────────────────────────────────────── */
 .whyUsSectionContainer {
-    display: grid;
-    height: 100dvh;
     position: relative;
+    overflow: hidden;
     width: 100%;
+    min-height: 100dvh;
+    padding-bottom: 5%;
+    background-color: #000; /* fallback behind video */
+    z-index: 5;
 }
 
-/* Grid of flip‑cards */
+.background-video {
+    position: absolute;
+    top: 20%;
+    left: 30%;
+    width: 120%;
+    height: auto;
+    object-fit: cover;
+    object-position: 50% 50%;
+    transform: translate(-33%, -30%) scale(0.85);
+    transform-origin: center center;
+    z-index: -1;
+}
+
+/* ─────────────────────────────────────────────────── */
+/* Grid of flip‑cards (desktop)                        */
+/* ─────────────────────────────────────────────────── */
 .reasonsContainer {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    padding-top: 5%;
+    padding-top: 3.5%;
     padding-inline: 10%;
-    gap: 1rem;
+    gap: 2rem;
+    row-gap: 10%;
     justify-items: center;
     align-items: center;
 }
 
-/* Single‑column on narrower viewports */
-@media (max-width: 768px) {
-    .reasonsContainer {
-        grid-template-columns: 1fr;
-    }
+/* ─────────────────────────────────────────────────── */
+/* Glow effect on images (desktop)                     */
+/* ─────────────────────────────────────────────────── */
+.intense-blue-glow {
+    filter:
+            drop-shadow(0 0 8px rgba(0, 170, 255, 0.8))
+            drop-shadow(0 0 16px rgba(0, 170, 255, 0.6))
+            drop-shadow(0 0 24px rgba(0,  85, 255, 0.4));
+    transition: filter 0.2s ease-in-out;
 }
 
 /* ─────────────────────────────────────────────────── */
-/* Flip‑card base styles                               */
+/* Flip‑card base styles (desktop)                     */
 /* ─────────────────────────────────────────────────── */
-
-/* Outer wrapper */
 .flip-card {
     background-color: transparent;
     width: 100%;
-    max-width: 500px;
-    aspect-ratio: 500 / 350;
-    border: 1px solid #f1f1f1;
+    max-width: 450px;
+    aspect-ratio: 500/350;
     perspective: 1000px;
     border-radius: 30px;
 }
 
-/* Inner 3D container */
 .flip-card-inner {
     position: relative;
     width: 100%;
@@ -55,70 +73,136 @@
     border-radius: 30px;
 }
 
-/* Flip on hover (desktop) */
 .flip-card:hover .flip-card-inner {
     transform: rotateY(180deg);
 }
 
-/* Both front & back faces */
 .flip-card-front,
 .flip-card-back {
     position: absolute;
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
     border-radius: 30px;
 }
 
-/* Front face styling */
 .flip-card-front {
-    background-color: #bbb;
+    background-color: transparent;
     color: black;
 }
 
-/* Back face styling + centering container */
 .flip-card-back {
     background-color: dodgerblue;
-    color: white;
+    color: aliceblue;
     transform: rotateY(180deg);
-
-    /* center content vertically & horizontally */
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;        /* ← changed from flex-start */
+    align-items: center;
     box-sizing: border-box;
 }
 
-/* ─────────────────────────────────────────────────── */
-/* Dynamic header & body padding                      */
-/* ─────────────────────────────────────────────────── */
-
-/* Card header */
+/* Dynamic header & body padding (desktop) */
 .flip-card-back .cardHeader {
     font-size: clamp(1rem, 2vw, 2rem);
     line-height: 1.2;
-
-    /* larger default top-pad, but still fluid */
     padding-top: clamp(1.25em, 1vw, 2em);
     padding-bottom: 0.5em;
-
-    /* dynamic side‑padding: min 1.5rem, ideal 8%, max 3.5rem */
     padding-inline: clamp(1.5rem, 8%, 3.5rem);
-
-    text-align: center;         /* center the lines of text */
+    text-align: center;
 }
 
-/* Card body */
 .flip-card-back .cardBody {
     font-size: clamp(0.25rem, 3vw, 1rem);
-
     padding-top: clamp(1em, 1.5vw, 1.5em);
     padding-bottom: 0.6em;
-
-    /* dynamic side‑padding: min 1.5rem, ideal 10%, max 4rem */
     padding-inline: clamp(1.5rem, 10%, 4rem);
-
-    /* you can also text‑align:center here if you want paragraph centered */
 }
+
+/* Section heading animation & styles (desktop) */
+.headingWhyUs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+    font-family: "Montserrat", Arial, sans-serif;
+    font-weight: bolder;
+    color: aliceblue;
+    font-size: clamp(1rem, 2.5vw, 2.5rem);
+    text-align: center;
+    padding-block: clamp(1rem, 2vh, 2rem);
+    padding-inline: clamp(1.5rem, 4vw, 3rem);
+    min-height: clamp(3rem, 8vh, 5rem);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.headingWhyUs.slide-in {
+    opacity: 1;
+}
+
+/* ─────────────────────────────────────────────────── */
+/* Mobile: simple vertical stack layout for cards     */
+/* ─────────────────────────────────────────────────── */
+/* ─────────────────────────────────────────────────── */
+/* Mobile: uniform, spaced cards & full‑face icons    */
+/* ─────────────────────────────────────────────────── */
+@media screen and (max-width: 768px) {
+    .whyUsSectionContainer {
+        padding: 2rem 1rem 3rem;
+    }
+
+    .background-video {
+        position: absolute;
+
+        height: auto;
+        object-fit: cover;
+        object-position: 50% 50%;
+
+        transform-origin: center center;
+        z-index: -1;
+    }
+
+    .flip-card:active .flip-card-inner {
+        transform: rotateY(180deg);
+    }
+
+    .headingWhyUs {
+        margin-bottom: 1.5rem;
+        padding-inline: 1rem;
+    }
+
+    .reasonsContainer {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;          /* more vertical breathing room */
+        padding-inline: 1rem;
+    }
+
+    .flip-card {
+        width: 100%;
+        max-width: 100%;
+        aspect-ratio: 500/350;  /* same ratio as desktop */
+        margin: 0;
+    }
+
+    /* remove any top‑padding and center the icon */
+    .flip-card-front {
+        padding: 0 !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* make the icon fill the entire front face */
+    .flip-card-front img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+}
+
