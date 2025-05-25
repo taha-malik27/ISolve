@@ -11,7 +11,7 @@ const HeroSection = () => {
             <NavBar className="mt-auto" />
 
             <div className="d-flex flex-column justify-content-center align-items-start px-4 position-relative" style = {{height: "75%"}}>
-                <h1 className="display-1 static-glow header">Bring Your Brand <br /> to Life Online</h1>
+                <h1 className="display-1 static-glow title">Bring Your Brand <br /> to Life Online</h1>
                 <p className="lead mb-4 text">Professional web design, development & support under one roof</p>
 
                 <div className="d-flex gap-3">

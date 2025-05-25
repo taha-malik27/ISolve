@@ -56,7 +56,7 @@ const OfferSection = () => {
                 <span className="underline-slide">What We Do</span>
             </div>
 
-            <div ref={subtitleRef} className="subtitle header">
+            <div ref={subtitleRef} className="subtitle title">
                 Ready to stand out in a crowded online world? Let us turn your vision into
                 a captivating digital experience that converts.
             </div>
