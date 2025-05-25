@@ -9,15 +9,16 @@
     height: 85dvh;
     padding: 0 5%;
     background-color: rgba(14, 95, 246, 0.75);
-    overflow-x: hidden;
-    overflow-y: visible;
+    overflow: hidden;
     z-index: 0;
     background-image:
             url("../assets/img2.png"),
-            linear-gradient(to right, #616161, #616161);
+            linear-gradient(to right, #1f2937, #1f2937);
     background-repeat: no-repeat, no-repeat;
     background-size: 50% 100%, 10px auto;
     background-position: 0% 70%, 50% 70%;
+    border-bottom: #0a0a0a solid 5px;
+
 }
 
 /* hide the mobile <img> on desktop */
@@ -28,7 +29,7 @@
 /* ── ANIMATION STATES ──────────────────────────────────── */
 
 /* Heading: slide down from above using margin */
-.heading {
+.headingOffer {
     opacity: 0;
     margin-top: -4rem;
     transition:
@@ -49,33 +50,29 @@
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
-.heading.slide-in {
+.headingOffer.slide-in {
     opacity: 1;
     margin-top: 0;
 }
 
-/* Subtitle, body & button: slide up from below */
+/* Subtitle, body & button: fade in on entry */
 .subtitle,
 .body,
 .lmButton {
     opacity: 0;
-    transform: translateY(100%);
-    transition:
-            transform 0.6s ease-out,
-            opacity   0.6s ease-out;
+    transition: opacity 0.6s ease-out;
 }
 .subtitle.slide-in,
 .body.slide-in,
 .lmButton.slide-in {
     opacity: 1;
-    transform: translateY(0);
 }
 
 /* ── DESKTOP STYLING ──────────────────────────────────── */
 
 /* Subtitle */
 .subtitle {
-    margin-top: 7.5%;
+    margin-top: 4%;
     font-size: clamp(1.3em, 2vw, 2rem);
     text-align: right;
     margin-left: 55%;
@@ -132,13 +129,12 @@
     }
 
     .offer-container {
-        /* remove any top padding so the heading can sit flush */
         padding-top: 0;
     }
 
-    .heading {
+    .headingOffer {
         width: 90%;
-        margin: 0 auto 2%;    /* no top gap, only bottom spacing */
+        margin: 0 auto 2%;
         text-align: center;
     }
 
@@ -162,7 +158,15 @@
         width: 80% !important;
         max-width: 300px;
         height: auto !important;
-        padding: clamp(0.75rem, 3vw, 1rem)
-        clamp(1rem, 5vw, 1.25rem) !important;
+        padding: clamp(0.75rem, 3vw, 1rem) clamp(1rem, 5vw, 1.25rem) !important;
+    }
+}
+
+/* ──────────────────────────────────────────────────────── */
+/* DESKTOP ONLY: ensure no scrollbars and lock height       */
+/* ──────────────────────────────────────────────────────── */
+@media screen and (min-width: 769px) {
+    .offer-container {
+        overflow: hidden;
     }
 }

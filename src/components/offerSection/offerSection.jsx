@@ -12,29 +12,47 @@ const OfferSection = () => {
     const buttonRef = useRef(null);
 
     useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
+        // --- FADE-IN LOGIC for subtitle, body, and button ---
+        const fadeElements = [subtitleRef.current, bodyRef.current, buttonRef.current].filter(Boolean);
+        const fadeObserver = new IntersectionObserver(
+            (entries, observer) => {
+                entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('slide-in');
-                    } else {
-                        entry.target.classList.remove('slide-in');
+                        observer.unobserve(entry.target);
                     }
                 });
             },
-            { root: null, rootMargin: '0px', threshold: 0.1 }
+            { threshold: 0.1 }
         );
+        fadeElements.forEach(el => fadeObserver.observe(el));
 
-        [headingRef, subtitleRef, bodyRef, buttonRef].forEach((ref) => {
-            if (ref.current) observer.observe(ref.current);
-        });
+        // --- SLIDE-DOWN LOGIC for heading on downward scroll ---
+        let lastScrollY = window.pageYOffset;
+        const handleScroll = () => {
+            const currentY = window.pageYOffset;
+            const isScrollingDown = currentY > lastScrollY;
+            const headingEl = headingRef.current;
+            if (headingEl) {
+                const rect = headingEl.getBoundingClientRect();
+                const inView = rect.top < window.innerHeight && rect.bottom > 0;
+                if (inView && isScrollingDown) {
+                    headingEl.classList.add('slide-in');
+                }
+            }
+            lastScrollY = currentY;
+        };
+        window.addEventListener('scroll', handleScroll, { passive: true });
 
-        return () => observer.disconnect();
+        return () => {
+            fadeObserver.disconnect();
+            window.removeEventListener('scroll', handleScroll);
+        };
     }, []);
 
     return (
         <div className="offer-container">
-            <div ref={headingRef} className="heading">
+            <div ref={headingRef} className="headingOffer">
                 <span className="underline-slide">What We Do</span>
             </div>
 

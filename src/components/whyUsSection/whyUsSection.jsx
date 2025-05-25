@@ -5,7 +5,7 @@ import collabIcon from '../../assets/collab.png';
 import gearIcon   from '../../assets/gear.png';
 import codeIcon   from '../../assets/code.png';
 import shieldIcon from '../../assets/shield.png';
-import bgVideo    from '../../assets/WhyUsBG.MOV';
+import bgVideo    from '../../assets/WhyUsBG.mp4';
 
 import '../../index.css';
 import '../../styles/whyUsSection.css';
@@ -34,7 +34,7 @@ const WhyUsSection = () => {
         <div className="whyUsSectionContainer h-auto">
             {/* video background */}
             <video
-                className="background-video"
+                className="background-video border-1"
                 src={bgVideo}
                 autoPlay
                 loop

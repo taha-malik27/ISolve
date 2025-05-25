@@ -1,0 +1,64 @@
+.ourWorkSection {
+    height: auto;
+    background: #04060AFF;
+    background: linear-gradient(180deg, rgba(4, 6, 10, 1) 25%, rgba(31, 41, 55, 1) 75%);
+}
+
+/* Section heading animation & styles (desktop) */
+.headingOurWork {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+    font-family: "Montserrat", Arial, sans-serif;
+    font-weight: bolder;
+    color: aliceblue;
+    font-size: clamp(1rem, 2.5vw, 2.5rem);
+    text-align: center;
+    padding-block: clamp(1rem, 2vh, 2rem);
+    padding-inline: clamp(1.5rem, 4vw, 3rem);
+    min-height: clamp(3rem, 8vh, 5rem);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.headingOurWork.slide-in {
+    opacity: 1;
+}
+
+.stack{
+    padding-top: 10dvh;
+    padding-bottom: 10dvh;
+}
+
+
+.displayBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 40dvh;
+
+}
+
+.imageStyling{
+
+}
+
+
+
+
+
+
+@media screen and (max-width: 768px) {
+
+    .headingOurWork {
+        margin-bottom: 1.5rem;
+        padding-inline: 1rem;
+    }
+
+}
