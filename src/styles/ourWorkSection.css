@@ -18,7 +18,7 @@
     transition: opacity 1.5s ease-in-out;
     font-family: "Montserrat", Arial, sans-serif;
     font-weight: bolder;
-    color: #00000a;
+    color: aliceblue;
     font-size: clamp(1rem, 2.5vw, 2.5rem);
     text-align: center;
     padding-block: clamp(1rem, 2vh, 2rem);
@@ -92,9 +92,7 @@
     transform: scale(1.05);
 }
 
-.cardGlow{
-    filter: drop-shadow(0 0 12px white);
-}
+
 
 
 

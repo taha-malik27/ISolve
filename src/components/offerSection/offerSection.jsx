@@ -51,7 +51,7 @@ const OfferSection = () => {
     }, []);
 
     return (
-        <div className="offer-container">
+        <div className="offer-container glow">
             <div ref={headingRef} className="headingOffer">
                 <span className="underline-slide">What We Do</span>
             </div>

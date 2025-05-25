@@ -7,7 +7,7 @@ import InfoBar from "./infoBar";
 
 const HeroSection = () => {
     return (
-        <div className="hero-container text-white">
+        <div className="hero-container text-white glow">
             <NavBar className="mt-auto" />
 
             <div className="d-flex flex-column justify-content-center align-items-start px-4 position-relative" style = {{height: "75%"}}>

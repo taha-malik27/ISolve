@@ -1,38 +1,219 @@
+/* ====================================================================
+   Layout Containers
+   ==================================================================== */
+
+/* Outer page section */
 .form-section {
     display: flex;
-    flex-direction: row;
-    height: auto;
     justify-content: center;
     align-items: center;
-    gap: 30rem;
-    margin: 5rem;
+    gap: 5rem;
+    padding: 5dvh 0;
+
+
+    background-color: black;
+    background-image: url("../assets/ContactUsBG.png");
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: 0 20%;
+
+
+    border-top: white 3px solid;
+    border-bottom: white 3px solid;
 }
 
+/* Header + subtitle wrapper */
+.headerBox {
+    text-align: center;
+    margin-right: 3dvh;
+    background: radial-gradient(
+            circle at 50% 50%,
+            #636465,
+            #3c3c3c,
+            #171717,
+            #000000
+    );
+    padding: 4dvh;
+    border-radius: 40px;
+}
 
-.form-group{
+/* The two‑column form grid */
+.form-box {
+    display: inline-grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+    padding: 3rem;
+    margin: 3dvh;
+    border: 3px solid #ffffff;
+    border-radius: 50px;
+    background: radial-gradient(
+            circle at 50% 50%,
+            #636465,
+            #3c3c3c,
+            #171717,
+            #000000
+    );
+
+    align-items: start;
+    max-width: 1000px;
+    width: auto;
+    transform: scale(0.9);
+}
+
+/* ====================================================================
+   Field Wrappers & Labels
+   ==================================================================== */
+
+/* Wraps each label+field pair */
+.form-group {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    background-color: rgba(14, 95, 246, 0.75);
+    align-items: flex-start;
+    gap: 0.5rem;
+    width: 100%;
+    font-family: "Montserrat", Arial, sans-serif;
 }
 
-.headerContact{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* Only for styling <label> elements */
+.form-label {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #ffffff;
+}
+
+/* ====================================================================
+   Inputs, Selects, Textareas
+   ==================================================================== */
+
+/* Common styles for all inputs */
+.form-input,
+.form-select,
+.form-textarea {
+
+
     width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
+    box-sizing: border-box;
+    font-size: 1rem;
+    padding: 0.6rem 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-family: "Montserrat", Arial, sans-serif;
+    background-color: #212121;
+    color: white;
+
+}
+
+
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+    /* force your background back */
+    -webkit-box-shadow: 0 0 0 1000px #212121 inset !important;
+    /* force your text color back */
+    -webkit-text-fill-color: #fff !important;
+    /* avoid any transition flicker */
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+    color: #fff;      /* white placeholder */
+    opacity: 1;       /* full strength */
+}
+
+
+/* If you need to override font‑family on selects only */
+select.form-select {
+
+    /* now your colors will show through */
+    background: #212121;
+    color: #fff;
+
+
+    /* make sure you have room for the arrow */
+    padding-right: 2rem;
+}
+
+/* also style the option list when it drops down */
+.form-select option {
+    background-color: #212121;
+    color: #fff;
+}
+
+
+/* Make textareas taller */
+.form-textarea {
+    min-height: 20dvh;
+
+}
+
+/* ====================================================================
+   Button
+   ==================================================================== */
+
+.form-button {
+
+    border: 3px solid black;
+    background: white;
+    color: black;
+    font-weight: 600;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+    font-family: "Montserrat", Arial, sans-serif;
+    align-self: center;
+    height: 10dvh;
+    font-size: 1.5rem;
+    width: 40dvh;
+    margin-top: -14.5dvh;
+
+}
+
+.form-button:hover {
+    background: #212121;
+    color: white;
+    border: 2px solid white;
+}
+
+.form-button:active {
+    background: black;
+    color: white;
+    border: 2px solid white;
+    transform: scale(0.9);
+}
+
+/* ====================================================================
+   Header Animation
+   ==================================================================== */
+
+.form-header {
     opacity: 0;
     transition: opacity 1.5s ease-in-out;
     font-family: "Montserrat", Arial, sans-serif;
     font-weight: bolder;
-    color: #00000a;
-    font-size: clamp(1rem, 2.5vw, 2.5rem);
-    text-align: center;
-    padding-block: clamp(1rem, 2vh, 2rem);
-    padding-inline: clamp(1.5rem, 4vw, 3rem);
-    min-height: clamp(3rem, 8vh, 5rem);
+    color: #ffffff;
+    font-size: clamp(1rem, 3vw, 3rem);
+    padding: clamp(1rem, 2vh, 2rem) clamp(1.5rem, 4vw, 3rem);
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+}
+
+.form-header.slide-in {
+    opacity: 1;
+}
+
+
+.form-subtitle{
+    font-family: "Montserrat", Arial, sans-serif;
+    color: white;
+    font-size: 1.2rem;
+}
+
+
+/* Responsive tweak for the header */
+@media screen and (max-width: 768px) {
+    .form-header {
+        font-size: clamp(1.7rem, 5vw, 2rem);
+        padding: 1.5rem 1rem;
+    }
 }

@@ -58,6 +58,10 @@
   background-size: 100% 2px;                    /* fill the full width of each line */
 }
 
+.glow{
+  filter: drop-shadow(0 0 12px white);
+}
+
 
 
 @keyframes pulse {

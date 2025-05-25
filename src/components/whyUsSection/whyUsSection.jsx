@@ -31,7 +31,7 @@ const WhyUsSection = () => {
     const imgStyle2 = { maxWidth: '320px', maxHeight: '320px' };
 
     return (
-        <div className="whyUsSectionContainer h-auto">
+        <div className="whyUsSectionContainer h-auto glow">
             {/* video background */}
             <video
                 className="background-video border-1"

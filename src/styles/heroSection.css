@@ -9,6 +9,7 @@
     background-repeat: no-repeat;
     background-size: 60% auto;
     background-position: 60% 20%;
+    border-bottom: white 3px solid;
 }
 
 /* mobile: center background horizontally */

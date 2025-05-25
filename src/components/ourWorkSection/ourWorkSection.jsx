@@ -24,15 +24,15 @@ const OurWorkSection = () => {
         <div className="ourWorkSection">
             {/* Heading */}
             <div ref={headingRef} className="pt-5 headingOurWork">
-                <span className="underline-slide cardGlow">Our Work</span>
+                <span className="underline-slide glow">Our Work</span>
             </div>
 
             <Stack gap={5} className="stack">
                 {/* Left Project: IllumiYYC */}
                 <div className="leftDisplayBox">
                     <div className="leftCard">
-                        <div className="cardGlow fw-bold fs-5 mb-2">IllumiYYC</div>
-                        <span className="cardGlow">
+                        <div className="glow fw-bold fs-5 mb-2">IllumiYYC</div>
+                        <span className="glow">
                             A custom-designed, responsive website developed for IllumiYYC, a Calgary-based automotive
                             customization brand. The platform highlights premium services such as ambient lighting,
                             starlight headliners, and body kits through an intuitive layout, interactive galleries,
@@ -67,8 +67,8 @@ const OurWorkSection = () => {
                     </div>
 
                     <div className="rightCard">
-                        <div className="cardGlow fw-bold fs-5 mb-2">HKCUTZ</div>
-                        <span className="cardGlow">
+                        <div className="glow fw-bold fs-5 mb-2">HKCUTZ</div>
+                        <span className="glow">
                             A sleek, mobile-first website designed for HKCUTZ, a Calgary-based barber known for precision
                             grooming. The site features automated booking, clear service listings, client testimonials,
                             and a modern visual gallery. Built for seamless user experience, it reflects the shop’s
