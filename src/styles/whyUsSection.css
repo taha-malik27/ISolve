@@ -93,7 +93,15 @@
 }
 
 .flip-card-back {
-    background-color: dodgerblue;
+    background: radial-gradient(
+            circle at 50% 50%,
+            #66caf5,
+            #3988e5,
+            #1757e3,
+            #0032a1
+    );
+    border: 3px solid #001850;
+
     color: aliceblue;
     transform: rotateY(180deg);
     display: flex;
@@ -132,7 +140,7 @@
     transition: opacity 1.5s ease-in-out;
     font-family: "Montserrat", Arial, sans-serif;
     font-weight: bolder;
-    color: aliceblue;
+    color: #108dfa;
     font-size: clamp(1rem, 2.5vw, 2.5rem);
     text-align: center;
     padding-block: clamp(1rem, 2vh, 2rem);

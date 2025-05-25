@@ -82,6 +82,24 @@ const OurWorkSection = () => {
                         </div>
                     </div>
                 </div>
+
+                {/*FUTURE WEBISTE*/}
+                {/*<div className="leftDisplayBox" >*/}
+
+
+                {/*    <div className="iframeWrapper">*/}
+                {/*        <iframe*/}
+                {/*            src="https://illumiyyc.com/"*/}
+                {/*            className="embeddedIframe"*/}
+                {/*            allowFullScreen*/}
+                {/*            title="Embedded Website"*/}
+                {/*        ></iframe>*/}
+                {/*    </div>*/}
+
+                {/*</div>*/}
+
+
+
             </Stack>
         </div>
     );

@@ -43,7 +43,7 @@ const WhyUsSection = () => {
             />
 
             {/* heading */}
-            <div ref={headingRef} className="headingWhyUs">
+            <div ref={headingRef} className="headingWhyUs intense-blue-glow">
                 <span className="underline-slide">Why Choose ISolve</span>
             </div>
 
