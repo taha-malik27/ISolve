@@ -1,7 +1,9 @@
 .ourWorkSection {
     height: auto;
     background: #04060AFF;
-    background: linear-gradient(180deg, rgba(4, 6, 10, 1) 25%, rgba(31, 41, 55, 1) 75%);
+    background: linear-gradient(180deg, rgba(4, 6, 10, 1) 25%, rgb(2, 50, 115) 75%);
+    border-top: white 3px solid;
+    align-items: center;
 }
 
 /* Section heading animation & styles (desktop) */
@@ -31,34 +33,135 @@
 }
 
 .stack{
+    align-items: center;
     padding-top: 10dvh;
     padding-bottom: 10dvh;
 }
 
 
-.displayBox{
+.leftDisplayBox {
+    width: 90%;
+    padding-left: 16%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
+    flex-direction: row;
+    align-items: center;          /* vertical centering */
+    justify-content: center;     /* horizontal centering */
     height: 40dvh;
-
+    box-sizing: border-box;
+    border-radius: 500px;
+    background: #04060AFF;
+    background: linear-gradient(180deg, rgb(2, 50, 115) 25%,  rgba(4, 6, 10, 1)75%);
 }
 
-.imageStyling{
+.rightDisplayBox {
+    width: 90%;
+    padding-right: 16%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;          /* vertical centering */
+    justify-content: center;     /* horizontal centering */
+    height: 40dvh;
+    box-sizing: border-box;
+    border-radius: 500px;
+    background: #04060AFF;
+    background: linear-gradient(180deg, rgb(2, 50, 115) 25%,  rgba(4, 6, 10, 1)75%);
+}
 
+.leftCard{
+    padding:2dvh;
+    margin-right: -5%;
+    text-align: center;
+    font-family: "Montserrat", Arial, sans-serif;
+    width: 60dvh;
+    height: auto;
+    background: rgba(255, 255, 255, 0);
+    color: aliceblue;
+    transform: scale(1.05);
+}
+
+
+.rightCard{
+    padding:2dvh;
+    margin-left: -5%;
+    text-align: center;
+    font-family: "Montserrat", Arial, sans-serif;
+    width: 60dvh;
+    height: auto;
+    background: rgba(255, 255, 255, 0);
+    color: aliceblue;
+    transform: scale(1.05);
+}
+
+.cardGlow{
+    filter: drop-shadow(0 0 12px white);
 }
 
 
 
+
+.iframeWrapper {
+    width: 1280px;
+    height: 800px;
+    transform: scale(0.415);
+    overflow: hidden;
+    border: 1px solid black;
+    pointer-events: auto;
+    background-color: white;
+    border-radius: 15px;
+}
+
+/* Full coverage for iframe */
+.embeddedIframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
 
 
 
 @media screen and (max-width: 768px) {
-
-    .headingOurWork {
-        margin-bottom: 1.5rem;
-        padding-inline: 1rem;
+    .stack {
+        padding-top: 5dvh;
+        padding-bottom: 5dvh;
+        gap: 3rem;
     }
 
+    .leftDisplayBox,
+    .rightDisplayBox {
+        flex-direction: column;
+        padding: 0 5%;
+        width: 100%;
+        height: auto;
+        border-radius: 30px;
+        gap: 1rem;
+    }
+
+    .leftCard,
+    .rightCard {
+        width: 100%;
+        margin: 0;
+        padding: 1.5rem 1rem;
+        font-size: 0.95rem;
+        transform: none;
+    }
+
+    .iframeWrapper {
+        width: 100%;
+        height: 300px;
+        transform: none;
+        border: none;
+        border-radius: 10px;
+    }
+
+    .embeddedIframe {
+        width: 100%;
+        height: 100%;
+    }
+
+    .headingOurWork {
+        font-size: clamp(1.7rem, 5vw, 2rem);
+        padding-inline: 1rem;
+        padding-block: 1.5rem;
+    }
 }
+
