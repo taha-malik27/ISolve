@@ -1,6 +1,8 @@
 // ContactForm.jsx
 import React, { useState, useEffect, useRef } from "react";
 import "../../styles/contactUsSection.css";
+import logoIcon    from '../../assets/logoIconBW.png';
+
 
 const ContactForm = () => {
     const [resultMsg, setResultMsg] = useState("");
@@ -55,12 +57,14 @@ const ContactForm = () => {
     return (
         <div className="form-section glow">
             {/* Header column */}
-            <div className="headerBox glow">
+            <div className="headerBox  ">
+                <img src={logoIcon} style={{maxWidth :  "100px"}} className="glow"  />
+
                 <h2 ref={headingRef} className="form-header glow">
-                    Contact Us
+                    <span className="underline-slide"> Contact Us </span>
                 </h2>
                 <p className="form-subtitle glow">
-                    Start your journey digital excellence with ISolve today.
+                    Start your journey of digital excellence with ISolve today.
                 </p>
             </div>
 

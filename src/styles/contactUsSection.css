@@ -12,10 +12,7 @@
 
 
     background-color: black;
-    background-image: url("../assets/ContactUsBG.png");
-    background-repeat: no-repeat;
-    background-size: 100% auto;
-    background-position: 0 20%;
+
 
 
     border-top: white 3px solid;
@@ -26,13 +23,6 @@
 .headerBox {
     text-align: center;
     margin-right: 3dvh;
-    background: radial-gradient(
-            circle at 50% 50%,
-            #636465,
-            #3c3c3c,
-            #171717,
-            #000000
-    );
     padding: 4dvh;
     border-radius: 40px;
 }
@@ -153,9 +143,9 @@ select.form-select {
 
 .form-button {
 
-    border: 3px solid black;
-    background: white;
-    color: black;
+    border: 3px solid #ffffff;
+    background: #212121;
+    color: #ffffff;
     font-weight: 600;
     border-radius: 40px;
     cursor: pointer;
@@ -170,9 +160,9 @@ select.form-select {
 }
 
 .form-button:hover {
-    background: #212121;
-    color: white;
-    border: 2px solid white;
+    background: #ffffff;
+    color: #212121;
+    border: 3px solid #212121;
 }
 
 .form-button:active {
@@ -192,7 +182,7 @@ select.form-select {
     font-family: "Montserrat", Arial, sans-serif;
     font-weight: bolder;
     color: #ffffff;
-    font-size: clamp(1rem, 3vw, 3rem);
+    font-size: clamp(2rem, 5vw, 5rem);
     padding: clamp(1rem, 2vh, 2rem) clamp(1.5rem, 4vw, 3rem);
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
@@ -216,4 +206,56 @@ select.form-select {
         font-size: clamp(1.7rem, 5vw, 2rem);
         padding: 1.5rem 1rem;
     }
+
+    /* Stack header + form vertically */
+    .form-section {
+        flex-direction: column;
+        gap: 2rem;                /* smaller gap */
+        padding: 2dvh 1rem;       /* tighter padding */
+        background-position: center 10%;
+    }
+
+    /* Shrink and center the header box */
+    .headerBox {
+        width: 90%;               /* almost full width */
+        margin: 0 auto;           /* center */
+        padding: 3dvh 2vw;        /* adjust vertical/horizontal padding */
+        border-radius: 30px;      /* slightly smaller corners */
+    }
+
+    /* Single‑column form layout */
+    .form-box {
+        display: grid;
+        grid-template-columns: 1fr; /* one column */
+        gap: 1.5rem;                /* tighter gap */
+        padding: 2rem 1rem;         /* reduced padding */
+        margin: 2dvh auto;          /* center horizontally */
+        transform: none;            /* remove desktop scale */
+        width: 100%;
+        max-width: 100%;
+        border-radius: 30px;        /* adjust corners */
+    }
+
+    /* Make each field full width */
+    .form-group {
+        width: 100%;
+    }
+
+    /* Adjust textarea height for mobile */
+    .form-textarea {
+        min-height: 25dvh;
+    }
+
+    /* Full‑width, touch‑friendly button */
+    .form-button {
+        width: 100%;
+        margin: 1.5rem 0 0 0; /* reset negative desktop margin */
+        padding: 1rem;       /* more tappable area */
+        font-size: 1.2rem;   /* slightly smaller text */
+        height: auto;        /* remove fixed desktop height */
+        transform: none;     /* remove desktop active scale */
+        border-radius: 30px;
+        align-self: stretch; /* fill container */
+    }
+
 }
