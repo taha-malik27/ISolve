@@ -8,6 +8,10 @@ const ContactForm = () => {
     const [resultMsg, setResultMsg] = useState("");
     const [msgColor, setMsgColor] = useState("");
     const headingRef = useRef(null);
+    const imgRef     = useRef(null);
+    const subRef = useRef(null);
+    const formRef = useRef(null);
+
 
     // Slide‑in heading observer
     useEffect(() => {
@@ -20,6 +24,10 @@ const ContactForm = () => {
             { threshold: 0.1 }
         );
         if (headingRef.current) observer.observe(headingRef.current);
+        if (imgRef.current)     observer.observe(imgRef.current);
+        if (subRef.current) observer.observe(subRef.current);
+        if(formRef.current) observer.observe(formRef.current);
+
         return () => observer.disconnect();
     }, []);
 
@@ -58,18 +66,18 @@ const ContactForm = () => {
         <div className="form-section glow">
             {/* Header column */}
             <div className="headerBox  ">
-                <img src={logoIcon} style={{maxWidth :  "100px"}} className="glow"  />
+                <img  src={logoIcon} style={{maxWidth :  "100px"}} className="glow form-img" ref={imgRef} />
 
                 <h2 ref={headingRef} className="form-header glow">
                     <span className="underline-slide"> Contact Us </span>
                 </h2>
-                <p className="form-subtitle glow">
+                <p  ref={subRef} className="form-subtitle glow">
                     Start your journey of digital excellence with ISolve today.
                 </p>
             </div>
 
             {/* Form column */}
-            <form onSubmit={handleSubmit} className="form-box glow">
+            <form onSubmit={handleSubmit} className="form-box glow" ref={formRef}>
                 {/* Web3Forms hidden fields */}
                 <input type="hidden" name="access_key" value="71fff338-ae3c-423e-920f-69826bc8747e" />
                 <input

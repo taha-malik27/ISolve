@@ -19,6 +19,8 @@
     border-bottom: white 3px solid;
 }
 
+
+
 /* Header + subtitle wrapper */
 .headerBox {
     text-align: center;
@@ -48,6 +50,12 @@
     max-width: 1000px;
     width: auto;
     transform: scale(0.9);
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
+
+.form-box.slide-in{
+    opacity: 1;
 }
 
 /* ====================================================================
@@ -192,11 +200,26 @@ select.form-select {
     opacity: 1;
 }
 
+.form-img{
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
+
+.form-img.slide-in {
+    opacity: 1;
+}
+
 
 .form-subtitle{
     font-family: "Montserrat", Arial, sans-serif;
     color: white;
     font-size: 1.2rem;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
+
+.form-subtitle.slide-in {
+    opacity: 1;
 }
 
 

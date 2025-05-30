@@ -50,11 +50,11 @@ const NavBar = () => {
 
                 {/* Logo */}
                 <div className="logo-wrapper">
-                    <Navbar.Brand href="#" className="p-0 m-0 d-flex align-items-center">
+                    <Navbar.Brand href="#" className="ps-4 m-0 d-flex align-items-center">
                         <img
                             src={logo}
                             alt="MySite Logo"
-                            width="200"
+                            width="180"
                             className="d-inline-block align-top m-1 static-glow"
                         />
                     </Navbar.Brand>

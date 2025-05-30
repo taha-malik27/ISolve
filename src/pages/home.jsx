@@ -4,6 +4,7 @@ import OfferSection from "../components/offerSection/offerSection";
 import WhyUsSection from "../components/whyUsSection/whyUsSection";
 import OurWorkSection from "../components/ourWorkSection/ourWorkSection";
 import ContactUsSection from "../components/contactUsSection/contactUsSection";
+import PageFooter from "../components/pageFooter/pageFooter";
 
 const HomePage = () => {
     return <div>
@@ -12,6 +13,7 @@ const HomePage = () => {
         <WhyUsSection/>
         <OurWorkSection/>
         <ContactUsSection/>
+        <PageFooter/>
     </div>;
 };
 

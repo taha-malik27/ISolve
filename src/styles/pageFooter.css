@@ -1,0 +1,8 @@
+.pageFooter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+    font-family: "Montserrat", Arial, sans-serif;
+}
