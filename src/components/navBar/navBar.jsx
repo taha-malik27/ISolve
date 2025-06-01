@@ -9,8 +9,8 @@ import Glow from './glow';
 import '../../index.css';
 
 const SCROLL_STOP      = 40;   // navbar sticks at 40px from the top
-const SLIDE_START      = 250;  // begin sliding after 100px of scroll
-const SLIDE_DISTANCE   = 120;   // complete slide over the next 80px
+const SLIDE_START      = 700;  // begin sliding after 700px of scroll
+const SLIDE_DISTANCE   = 150;   // complete slide over the next 150px
 const SLIDE_MULTIPLIER = 1;  // slide up by 100% of its height
 
 const NavBar = () => {
@@ -56,6 +56,10 @@ const NavBar = () => {
                             alt="MySite Logo"
                             width="180"
                             className="d-inline-block align-top m-1 static-glow"
+                            onClick={() => {
+                                // Force a full browser reload of the current page
+                                window.location.reload();
+                            }}
                         />
                     </Navbar.Brand>
                 </div>
@@ -77,7 +81,15 @@ const NavBar = () => {
                             style={{ zIndex: 1 }}
                         >
                             <Nav className="d-flex align-items-center flex-column flex-lg-row">
-                                <Nav.Link href="#home"     className="text-white px-3 static-glow text">Home</Nav.Link>
+                                <Nav.Link
+                                    onClick={() => {
+                                    // This tells the browser: “Reload this page from the server.”
+                                    window.location.reload();
+                                }}
+                                    className="text-white px-3 static-glow text">Home
+                                </Nav.Link>
+
+
                                 <Nav.Link href="#about"    className="text-white px-3 static-glow text">About</Nav.Link>
                                 <Nav.Link href="#projects" className="text-white px-3 static-glow text">Our Projects</Nav.Link>
                             </Nav>
@@ -87,20 +99,32 @@ const NavBar = () => {
 
                 {/* Desktop Contact Button (inline) */}
                 <div
-                    className="position-relative ms-5 d-none d-lg-inline-block text"
-                    style={{ height: '56px' }}
+                    className="position-relative ms-5 d-none d-lg-inline-block"
+                    style={{height: "56px"}}
                     onMouseEnter={() => setButtonGlow(true)}
                     onMouseLeave={() => setButtonGlow(false)}
                 >
-                    <Glow isActive={buttonGlow} color={"#59c3ff"} time={2} radius={175} />
+                    <Glow isActive={buttonGlow} color="#59c3ff" time={2} radius={175}/>
+
                     <Button
+                        href="#contactUs"         // ← still use href if you want a real link
                         variant="primary"
-                        className="fw-bold rounded-pill px-4 py-2 text "
-                        style={{ height: '56px', position: 'relative', zIndex: 1 }}
+                        className="fw-bold rounded-pill px-4 py-2 contactBtn"
+                        style={{
+                            height: "56px",
+                            lineHeight: "56px",         // force the text to vertically center
+                            display: "inline-flex",     // ensure flex centering for anchors
+                            alignItems: "center",
+                            justifyContent: "center",
+                            position: "relative",
+                            zIndex: 1,
+                            textDecoration: "none",     // just in case an underline appears
+                        }}
                     >
-                        <span className="static-glow text">Contact</span>
+                        <span className="static-glow contactBtn">Contact</span>
                     </Button>
                 </div>
+
             </Container>
 
             {/* Mobile Contact Button (below pill) */}
@@ -108,7 +132,7 @@ const NavBar = () => {
                 <Button
                     variant="primary"
                     className="fw-bold rounded-pill px-4 py-2 text"
-                    style={{ height: '56px' }}
+                    style={{height: '56px'}}
                 >
                     <span className="static-glow text">Contact</span>
                 </Button>

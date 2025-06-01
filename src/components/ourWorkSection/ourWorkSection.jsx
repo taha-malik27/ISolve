@@ -21,7 +21,7 @@ const OurWorkSection = () => {
     }, []);
 
     return (
-        <div className="ourWorkSection">
+        <div className="ourWorkSection" id="projects">
             {/* Heading */}
             <div ref={headingRef} className="pt-5 headingOurWork">
                 <span className="underline-slide glow">Our Work</span>
@@ -31,7 +31,7 @@ const OurWorkSection = () => {
                 {/* Left Project: IllumiYYC */}
                 <div className="leftDisplayBox">
                     <div className="leftCard">
-                        <div className="glow fw-bold fs-5 mb-2">IllumiYYC</div>
+                        <div className="cardTitle glow fw-bold">IllumiYYC</div>
                         <span className="glow">
                             A custom-designed, responsive website developed for IllumiYYC, a Calgary-based automotive
                             customization brand. The platform highlights premium services such as ambient lighting,
@@ -39,7 +39,7 @@ const OurWorkSection = () => {
                             and streamlined quote requests.
                         </span>
                         <div className="pt-3">
-                            <a className="btn btn-outline-light mt-3" href="https://illumiyyc.com" target="_blank" rel="noopener noreferrer">
+                            <a className="btn btn-outline-light " href="https://illumiyyc.com" target="_blank" rel="noopener noreferrer">
                                 Visit Site
                             </a>
                         </div>
@@ -67,7 +67,7 @@ const OurWorkSection = () => {
                     </div>
 
                     <div className="rightCard">
-                        <div className="glow fw-bold fs-5 mb-2">HKCUTZ</div>
+                        <div className="glow fw-bold cardTitle">HKCUTZ</div>
                         <span className="glow">
                             A sleek, mobile-first website designed for HKCUTZ, a Calgary-based barber known for precision
                             grooming. The site features automated booking, clear service listings, client testimonials,
@@ -75,7 +75,7 @@ const OurWorkSection = () => {
                             professional brand and commitment to quality.
                         </span>
                         <div className="pt-3">
-                            <a className="btn btn-outline-light mt-3" href="https://hkcutz.info" target="_blank"
+                            <a className="btn btn-outline-light " href="https://hkcutz.info" target="_blank"
                                rel="noopener noreferrer">
                                 Visit Site
                             </a>
@@ -106,3 +106,4 @@ const OurWorkSection = () => {
 };
 
 export default OurWorkSection;
+

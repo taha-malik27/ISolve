@@ -63,7 +63,7 @@ const ContactForm = () => {
     };
 
     return (
-        <div className="form-section glow">
+        <div className="form-section glow" id="contactUs">
             {/* Header column */}
             <div className="headerBox  ">
                 <img  src={logoIcon} style={{maxWidth :  "100px"}} className="glow form-img" ref={imgRef} />

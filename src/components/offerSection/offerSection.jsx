@@ -51,7 +51,7 @@ const OfferSection = () => {
     }, []);
 
     return (
-        <div className="offer-container glow">
+        <div className="offer-container glow" id = "about">
             <div ref={headingRef} className="headingOffer">
                 <span className="underline-slide">What We Do</span>
             </div>
@@ -67,19 +67,19 @@ const OfferSection = () => {
                 development, deployment, and ongoing support.
             </div>
 
-            <div ref={buttonRef} className="lmButton">
-                <Button
-                    className="static-glow"
-                    style={{
-                        '--glow-color': '#000850',
-                        backgroundColor: '#1f2937',
-                        borderColor: '#1f2937',
-                        color: 'aliceblue',
-                    }}
-                >
-                    <span className="text fw-bold">Learn More</span>
-                </Button>
-            </div>
+            {/*<div ref={buttonRef} className="lmButton">*/}
+            {/*    <Button*/}
+            {/*        className="static-glow"*/}
+            {/*        style={{*/}
+            {/*            '--glow-color': '#000850',*/}
+            {/*            backgroundColor: '#1f2937',*/}
+            {/*            borderColor: '#1f2937',*/}
+            {/*            color: 'aliceblue',*/}
+            {/*        }}*/}
+            {/*    >*/}
+            {/*        <span className="text fw-bold">Learn More</span>*/}
+            {/*    </Button>*/}
+            {/*</div>*/}
 
             <img
                 src={img2}

@@ -1,7 +1,7 @@
 .ourWorkSection {
     height: auto;
-    background: #04060AFF;
-    background: linear-gradient(180deg, rgba(4, 6, 10, 1) 25%, rgb(2, 50, 115) 75%);
+    background: #0c0c0c;;
+    background: linear-gradient(180deg, #0c0c0c 25%, rgb(2, 50, 115) 75%);
     border-top: white 3px solid;
     align-items: center;
 }
@@ -41,7 +41,7 @@
 
 .leftDisplayBox {
     width: 90%;
-    padding-left: 16%;
+    padding-left: 13%;
     display: flex;
     flex-direction: row;
     align-items: center;          /* vertical centering */
@@ -49,13 +49,13 @@
     height: 40dvh;
     box-sizing: border-box;
     border-radius: 500px;
-    background: #04060AFF;
-    background: linear-gradient(180deg, rgb(2, 50, 115) 25%,  rgba(4, 6, 10, 1)75%);
+    background: #0c0c0c;
+    background: linear-gradient(180deg, rgb(2, 50, 115) 25%,  #0c0c0c 75%);
 }
 
 .rightDisplayBox {
     width: 90%;
-    padding-right: 16%;
+    padding-right: 13%;
     display: flex;
     flex-direction: row;
     align-items: center;          /* vertical centering */
@@ -63,43 +63,60 @@
     height: 40dvh;
     box-sizing: border-box;
     border-radius: 500px;
-    background: #04060AFF;
-    background: linear-gradient(180deg, rgb(2, 50, 115) 25%,  rgba(4, 6, 10, 1)75%);
+    background: #0c0c0c;
+    background: linear-gradient(180deg, rgb(2, 50, 115) 25%,  #0c0c0c 75%);
 }
 
 .leftCard{
     padding:2dvh;
-    margin-right: -5%;
+    margin-right: -8%;
     text-align: center;
     font-family: "Montserrat", Arial, sans-serif;
-    width: 60dvh;
+
     height: auto;
     background: rgba(255, 255, 255, 0);
     color: aliceblue;
     transform: scale(1.05);
+    font-size: clamp(0.5rem, 0.9vw, 2rem);
 }
 
 
 .rightCard{
     padding:2dvh;
-    margin-left: -5%;
+    margin-left: -8%;
     text-align: center;
     font-family: "Montserrat", Arial, sans-serif;
-    width: 60dvh;
+
     height: auto;
     background: rgba(255, 255, 255, 0);
     color: aliceblue;
     transform: scale(1.05);
+    font-size: clamp(0.5rem, 0.9vw, 2rem);
+}
+
+
+.leftCard,
+.rightCard {
+    /* instead of width: 60dvh, let it fill available space but not exceed 60dvh */
+    width: 100%;
+    max-width: 60dvh;
+    box-sizing: border-box;    /* makes padding count toward that max-width */
+    overflow-wrap: break-word; /* force long words/lines to wrap */
+    word-break: break-word;    /* fallback for older browsers */
+}
+
+
+.cardTitle{
+    font-size: clamp(0.7rem, 1.1vw, 1.75rem);
+    margin: clamp(0.5rem, 0.5vw, 2rem);
+
 }
 
 
 
-
-
-
 .iframeWrapper {
-    width: 1280px;
-    height: 800px;
+    width: clamp(769px, 80vw, 1280px);
+    aspect-ratio: 16 / 10;
     transform: scale(0.415);
     overflow: hidden;
     border: 1px solid black;
@@ -110,8 +127,8 @@
 
 /* Full coverage for iframe */
 .embeddedIframe {
-    width: 100%;
-    height: 100%;
+    width: clamp(50%, 100%, 100%);
+    height: clamp(50%, 100%, 100%);
     border: none;
 }
 

@@ -5,6 +5,7 @@ import WhyUsSection from "../components/whyUsSection/whyUsSection";
 import OurWorkSection from "../components/ourWorkSection/ourWorkSection";
 import ContactUsSection from "../components/contactUsSection/contactUsSection";
 import PageFooter from "../components/pageFooter/pageFooter";
+import BottomBorder from "../components/pageFooter/bottomBorder";
 
 const HomePage = () => {
     return <div>
@@ -14,6 +15,7 @@ const HomePage = () => {
         <OurWorkSection/>
         <ContactUsSection/>
         <PageFooter/>
+        <BottomBorder/>
     </div>;
 };
 
