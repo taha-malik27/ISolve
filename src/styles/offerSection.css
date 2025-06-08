@@ -12,7 +12,7 @@
     overflow: hidden;
     z-index: 0;
     background-image:
-            url("../assets/img2.png"),
+            url("../assets/DesktopIMG.png"),
             linear-gradient(to right, #ffffff, #ffffff);
     background-repeat: no-repeat, no-repeat;
     background-size: 50% 100%, 10px auto;

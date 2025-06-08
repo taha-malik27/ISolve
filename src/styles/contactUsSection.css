@@ -49,7 +49,7 @@
     align-items: start;
     max-width: 1000px;
     width: auto;
-    transform: scale(0.9);
+    /*transform: scale(0.9);*/
     opacity: 0;
     transition: opacity 1.5s ease-in-out;
 }
@@ -160,10 +160,11 @@ select.form-select {
     transition: background 0.3s ease, color 0.3s ease;
     font-family: "Montserrat", Arial, sans-serif;
     align-self: center;
-    height: 10dvh;
+    /* use padding instead of fixed height/width for better scaling */
+    padding: 0.75rem 2rem;
     font-size: 1.5rem;
-    width: 40dvh;
-    margin-top: -14.5dvh;
+    width: auto;
+    margin-top: -7rem;
 
 }
 

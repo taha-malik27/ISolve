@@ -3,7 +3,7 @@
 import React, { useRef, useEffect } from 'react';
 import '../../styles/offerSection.css';
 import { Button } from 'react-bootstrap';
-import img2 from '../../assets/img2.png';
+import img2 from '../../assets/DesktopIMG.png';
 
 const OfferSection = () => {
     const headingRef = useRef(null);
