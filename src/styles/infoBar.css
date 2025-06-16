@@ -3,7 +3,7 @@
 /* ── your existing desktop styles ───────────────────────────────────────── */
 .info-bar {
     position: absolute;       /* out of flow, relative to parent */
-    top: 95%;
+
     left: 50%;
     transform: translateX(-50%);
 
@@ -13,9 +13,10 @@
 
     background-color: #1f2937;
     padding: 1rem 2rem;
+    margin-top: 10rem;
     border-radius: 10px;
 
-    width: 90%;
+    width: 93%;
     height: 15dvh;
 }
 
@@ -35,7 +36,7 @@
 
 .info-bar__label {
     color: #fff;
-    font-size: clamp(0.9rem, 2vw ,1.5rem);
+    font-size: clamp(0.6rem, 1.6vw ,1.1rem);
     font-weight: 0;
     white-space: pre-line;
     text-align: center;

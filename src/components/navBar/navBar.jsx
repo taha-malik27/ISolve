@@ -50,12 +50,12 @@ const NavBar = () => {
 
                 {/* Logo */}
                 <div className="logo-wrapper">
-                    <Navbar.Brand href="#" className="ps-4 m-0 d-flex align-items-center">
+                    <Navbar.Brand href="#" className="ps-4 ms-3 d-flex align-items-center">
                         <img
                             src={logo}
                             alt="MySite Logo"
                             width="180"
-                            className="d-inline-block align-top m-1 static-glow"
+                            className="align-top  static-glow"
                             onClick={() => {
                                 // Force a full browser reload of the current page
                                 window.location.reload();
@@ -99,7 +99,7 @@ const NavBar = () => {
 
                 {/* Desktop Contact Button (inline) */}
                 <div
-                    className="position-relative ms-5 d-none d-lg-inline-block"
+                    className="position-relative ms-5 me-5 d-none d-lg-inline-block"
                     style={{height: "56px"}}
                     onMouseEnter={() => setButtonGlow(true)}
                     onMouseLeave={() => setButtonGlow(false)}
@@ -109,7 +109,7 @@ const NavBar = () => {
                     <Button
                         href="#contactUs"         // ← still use href if you want a real link
                         variant="primary"
-                        className="fw-bold rounded-pill px-4 py-2 contactBtn"
+                        className="contactBtn fw-bold rounded-pill px-4 py-2 "
                         style={{
                             height: "56px",
                             lineHeight: "56px",         // force the text to vertically center
@@ -127,16 +127,16 @@ const NavBar = () => {
 
             </Container>
 
-            {/* Mobile Contact Button (below pill) */}
-            <div className="container-fluid d-flex d-lg-none justify-content-center mt-3 px-4 text">
-                <Button
-                    variant="primary"
-                    className="fw-bold rounded-pill px-4 py-2 text"
-                    style={{height: '56px'}}
-                >
-                    <span className="static-glow text">Contact</span>
-                </Button>
-            </div>
+            {/* Mobile Contact Button (below pill)  CURRENTLY NOT NEEDED    */}
+            {/*<div className="container-fluid d-flex d-lg-none justify-content-center mt-3 px-4 text">*/}
+            {/*    <Button*/}
+            {/*        variant="primary"*/}
+            {/*        className="fw-bold rounded-pill px-4 py-2 text"*/}
+            {/*        style={{height: '56px'}}*/}
+            {/*    >*/}
+            {/*        <span className="static-glow text">Contact</span>*/}
+            {/*    </Button>*/}
+            {/*</div>*/}
         </Navbar>
     );
 };

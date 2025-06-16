@@ -1,5 +1,4 @@
 .logo-wrapper {
-    margin-left: -2%;        /* pull it further left */
     padding-left: 0;
     overflow: visible;
     z-index: 2;
@@ -11,4 +10,20 @@
 
 .contactBtn{
     font-family: "Montserrat", Arial, sans-serif;
+}
+.navbar{
+    margin-bottom: 10dvh
+}
+
+
+
+@media screen and (max-width: 768px) {
+    .navbar{
+        margin-bottom: 10dvh
+    }
+
+    .navbar-brand img {
+        width: 120px; /* shrink logo size */
+    }
+
 }
