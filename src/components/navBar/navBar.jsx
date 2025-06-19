@@ -1,5 +1,3 @@
-// src/components/NavBar.jsx
-
 import React, { useState, useEffect } from 'react';
 import { Navbar, Container, Nav, Button } from 'react-bootstrap';
 import '../../styles/navBar.css';
@@ -20,6 +18,12 @@ const NavBar = () => {
     const isMobile = window.innerWidth < 768;
 
     useEffect(() => {
+        // On mobile, disable scroll animation
+        if (isMobile) {
+            setSlideFraction(0);
+            return;
+        }
+
         const handleScroll = () => {
             const y      = window.scrollY;
             const passed = Math.max(y - SLIDE_START, 0);
@@ -30,36 +34,35 @@ const NavBar = () => {
         window.addEventListener('scroll', handleScroll);
         handleScroll(); // initialize on mount
         return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+    }, [isMobile]);
 
     return (
         <Navbar
             expand="lg"
             className="mx-auto"
             style={{
-                position: 'sticky',
-                top:      `${SCROLL_STOP}px`,
-                width:    '100%',
-                zIndex:   2000,
-                transform:       `translateY(-${slideFraction * SLIDE_MULTIPLIER * 125}%)`,
-                transition:      'transform 0.25s ease',
-                pointerEvents:   slideFraction >= 1 ? 'none' : 'auto'
+                position:     isMobile ? 'static' : 'sticky',
+                top:          isMobile ? undefined : `${SCROLL_STOP}px`,
+                width:        '100%',
+                zIndex:       2000,
+                transform:    isMobile
+                    ? 'translateY(0)'
+                    : `translateY(-${slideFraction * SLIDE_MULTIPLIER * 125}%)`,
+                transition:   isMobile ? 'none' : 'transform 0.25s ease',
+                pointerEvents: isMobile ? 'auto' : (slideFraction >= 1 ? 'none' : 'auto')
             }}
         >
             <Container fluid className="px-4">
 
                 {/* Logo */}
                 <div className="logo-wrapper">
-                    <Navbar.Brand href="#" className="ps-4 ms-3 d-flex align-items-center">
+                    <Navbar.Brand href="#" className="ps-2 ms-3 d-flex align-items-center">
                         <img
                             src={logo}
                             alt="MySite Logo"
                             width="180"
-                            className="align-top  static-glow"
-                            onClick={() => {
-                                // Force a full browser reload of the current page
-                                window.location.reload();
-                            }}
+                            className="align-top static-glow"
+                            onClick={() => window.location.reload()}
                         />
                     </Navbar.Brand>
                 </div>
@@ -74,7 +77,7 @@ const NavBar = () => {
                         onMouseEnter={() => !isMobile && setGlowActive(true)}
                         onMouseLeave={() => !isMobile && setGlowActive(false)}
                     >
-                        {!isMobile && <Glow isActive={glowActive} time={3} color={"#ffffff"} />}
+                        {!isMobile && <Glow isActive={glowActive} time={3} color="#ffffff" />}
 
                         <div
                             className="bg-dark px-4 py-2 rounded-pill d-flex gap-3 position-relative flex-column flex-lg-row align-items-center justify-content-center justify-content-lg-start"
@@ -82,15 +85,10 @@ const NavBar = () => {
                         >
                             <Nav className="d-flex align-items-center flex-column flex-lg-row">
                                 <Nav.Link
-                                    onClick={() => {
-                                    // This tells the browser: “Reload this page from the server.”
-                                    window.location.reload();
-                                }}
-                                    className="text-white px-3 static-glow text">Home
-                                </Nav.Link>
-
-
-                                <Nav.Link href="#about"    className="text-white px-3 static-glow text">About</Nav.Link>
+                                    onClick={() => window.location.reload()}
+                                    className="text-white px-3 static-glow text"
+                                >Home</Nav.Link>
+                                <Nav.Link href="#about" className="text-white px-3 static-glow text">About</Nav.Link>
                                 <Nav.Link href="#projects" className="text-white px-3 static-glow text">Our Projects</Nav.Link>
                             </Nav>
                         </div>
@@ -100,25 +98,25 @@ const NavBar = () => {
                 {/* Desktop Contact Button (inline) */}
                 <div
                     className="position-relative ms-5 me-5 d-none d-lg-inline-block"
-                    style={{height: "56px"}}
+                    style={{ height: '56px' }}
                     onMouseEnter={() => setButtonGlow(true)}
                     onMouseLeave={() => setButtonGlow(false)}
                 >
-                    <Glow isActive={buttonGlow} color="#59c3ff" time={2} radius={175}/>
+                    <Glow isActive={buttonGlow} color="#59c3ff" time={2} radius={175} />
 
                     <Button
-                        href="#contactUs"         // ← still use href if you want a real link
+                        href="#contactUs"
                         variant="primary"
-                        className="contactBtn fw-bold rounded-pill px-4 py-2 "
+                        className="contactBtn fw-bold rounded-pill px-4 py-2"
                         style={{
                             height: "56px",
-                            lineHeight: "56px",         // force the text to vertically center
-                            display: "inline-flex",     // ensure flex centering for anchors
+                            lineHeight: "56px",
+                            display: "inline-flex",
                             alignItems: "center",
                             justifyContent: "center",
                             position: "relative",
                             zIndex: 1,
-                            textDecoration: "none",     // just in case an underline appears
+                            textDecoration: "none",
                         }}
                     >
                         <span className="static-glow contactBtn">Contact</span>
@@ -126,7 +124,6 @@ const NavBar = () => {
                 </div>
 
             </Container>
-
             {/* Mobile Contact Button (below pill)  CURRENTLY NOT NEEDED    */}
             {/*<div className="container-fluid d-flex d-lg-none justify-content-center mt-3 px-4 text">*/}
             {/*    <Button*/}

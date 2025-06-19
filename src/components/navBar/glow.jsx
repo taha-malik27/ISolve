@@ -23,6 +23,9 @@ const Glow = ({
         if (shapeRef.current) {
             try {
                 const total = shapeRef.current.getTotalLength();
+
+                console.log('[Glow] total perimeter (user-units):', total);
+
                 setLength(total);
             } catch (err) {
                 console.warn('Glow tracer disabled:', err);
@@ -41,37 +44,45 @@ const Glow = ({
 
     return (
         <svg
-            viewBox="0 0 300 56"
-            preserveAspectRatio="none"
-            className="position-absolute top-0 start-0 w-100 h-100"
+            viewBox="0 0 300 56"                                    //   sets the internal SVG coordinate system to 300×56 user‐units
+            preserveAspectRatio="none"                              //   allows the SVG to stretch freely to fill its container
+            className="position-absolute top-0 start-0 w-100 h-100" //   absolutely positions the SVG to cover its parent
             style={{
-                zIndex: 0,
-                filter: `blur(5px) drop-shadow(0 0 6px ${color})`,
-                opacity: isActive ? 1 : 0,
-                transition: 'opacity 0.3s ease-in-out',
+                zIndex: 0,                                          //   places the glow behind other elements
+                filter: `blur(5px) drop-shadow(0 0 6px ${color})`,  //   applies a blur and a colored shadow for the glow effect
+                opacity: isActive ? 1 : 0,                          //   toggles visibility based on the isActive prop
+                transition: 'opacity 0.3s ease-in-out',             //   animates the fade‐in/fade‐out of the glow
             }}
         >
-            <motion.rect
-                ref={shapeRef}
+
+
+            <style>
+                {`
+                @keyframes dash {
+                    from {stroke-dashoffset: 0;}                  /*     animation start: dash begins at offset 0 */
+                    to   {stroke-dashoffset: -${length}px;}       /*     animation end: dash offset moves by –length units (one full loop)*/
+                }
+                `}
+            </style>
+
+            <rect
+                ref={shapeRef}                                      //     React ref used to measure the path length programmatically
                 x="0"
-                y="0"
+                y="0"                                               //     places the rectangle at the top-left corner of the SVG
                 width="300"
-                height="56"
+                height="56"                                         //     sets the rectangle dimensions to match the viewBox
                 rx={radius}
-                ry={radius}
-                fill="none"
-                stroke={color}
-                strokeWidth="15"
-                strokeDasharray={`${dash} ${gap}`}
-                strokeDashoffset={0}
-                animate={{ strokeDashoffset: -length }}
-                transition={{
-                    duration: time,
-                    ease: 'linear',
-                    repeat: Infinity,
+                ry={radius}                                         //     applies rounded corners with the given radius
+                fill="none"                                         //     makes the rectangle interior transparent
+                stroke={color}                                      //     sets the outline color of the rectangle
+                strokeWidth="15"                                    //     sets the thickness of the outline
+                strokeDasharray={`${dash} ${gap}`}                  //     defines a dash and gap pattern for the stroke
+                style={{
+                    animation: `dash ${time}s linear infinite`      //     applies the CSS keyframe animation, looping forever
                 }}
             />
         </svg>
+
     );
 };
 

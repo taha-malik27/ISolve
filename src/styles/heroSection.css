@@ -8,7 +8,7 @@
     background-image: url("../assets/LandingPageBG.png");
     background-repeat: no-repeat;
     background-size: auto auto;
-    background-position: 40% 20%;
+    background-position: 80% 21%;
     border-bottom: 3px solid white;
 }
 
@@ -22,8 +22,9 @@
 
 .hero-text-section {
     max-width: 900px;
-    margin: 0 auto;
-    text-align: center;
+    margin-left: -23px; /* ← key change */
+    margin-right: auto; /* align to the left */
+    text-align: left;
 }
 
 .hero-text-section h1 {
@@ -52,6 +53,7 @@
     .hero-container {
         background-position: 70% 180px;
         background-size: 200%;
+        padding-top: 2rem;
     }
 
 
@@ -61,6 +63,7 @@
 
     .hero-text-section {
         text-align: center;
+        margin: -2rem auto 0;
     }
 
     .hero-text-section h1 {
