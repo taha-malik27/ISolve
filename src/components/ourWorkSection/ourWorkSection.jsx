@@ -39,7 +39,8 @@ const OurWorkSection = () => {
                             and streamlined quote requests.
                         </span>
                         <div className="pt-3">
-                            <a className="btn btn-outline-light " href="https://illumiyyc.com" target="_blank" rel="noopener noreferrer">
+                            <a className="btn btn-outline-light " href="https://illumiyyc.com" target="_blank"
+                               rel="noopener noreferrer">
                                 Visit Site
                             </a>
                         </div>
@@ -83,21 +84,37 @@ const OurWorkSection = () => {
                     </div>
                 </div>
 
-                {/*FUTURE WEBISTE*/}
-                {/*<div className="leftDisplayBox" >*/}
 
+                <div className="leftDisplayBox">
+                    <div className="leftCard">
+                        <div className="cardTitle glow fw-bold">LEDAUTO</div>
+                        <span className="glow">
+      LEDAUTO is a Surrey, BC–based automotive lighting specialist with over a decade of hands-on experience.
+      They’ve transformed 500+ cars for 500+ happy clients, offering premium services like app-controlled ambient light kits,
+      custom starlight headliners, and weather-resistant underglow installations.
+      The responsive site features interactive galleries, detailed service overviews, FAQs, and a streamlined quote request form.
+    </span>
+                        <div className="pt-3">
+                            <a
+                                className="btn btn-outline-light"
+                                href="https://ledauto.info/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                Visit Site
+                            </a>
+                        </div>
+                    </div>
 
-                {/*    <div className="iframeWrapper">*/}
-                {/*        <iframe*/}
-                {/*            src="https://illumiyyc.com/"*/}
-                {/*            className="embeddedIframe"*/}
-                {/*            allowFullScreen*/}
-                {/*            title="Embedded Website"*/}
-                {/*        ></iframe>*/}
-                {/*    </div>*/}
-
-                {/*</div>*/}
-
+                    <div className="iframeWrapper">
+                        <iframe
+                            src="https://ledauto.info/"
+                            className="embeddedIframe"
+                            allowFullScreen
+                            title="LEDAUTO Site Preview"
+                        ></iframe>
+                    </div>
+                </div>
 
 
             </Stack>
