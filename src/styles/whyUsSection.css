@@ -5,13 +5,12 @@
 /* ─────────────────────────────────────────────────── */
 .whyUsSectionContainer {
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     width: 100%;
     min-height: 100dvh;
     padding-bottom: 7.5%;
     background-color: #000; /* fallback behind video */
     z-index: 5;
-
 }
 
 .background-video {
@@ -44,12 +43,13 @@
 /* ─────────────────────────────────────────────────── */
 /* Glow effect on images (desktop)                     */
 /* ─────────────────────────────────────────────────── */
+/* rely on utility (.static-glow) for transition */
 .intense-blue-glow {
     filter:
             drop-shadow(0 0 8px rgba(0, 170, 255, 0.8))
             drop-shadow(0 0 16px rgba(0, 170, 255, 0.6))
             drop-shadow(0 0 24px rgba(0,  85, 255, 0.4));
-    transition: filter 0.2s ease-in-out;
+    /* transition removed to use .static-glow */
 }
 
 /* ─────────────────────────────────────────────────── */
@@ -136,8 +136,7 @@
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
-    opacity: 0;
-    transition: opacity 1.5s ease-in-out;
+    /* rely on utility (.animatable, .fade-in, .slide-down) */
     font-family: "Montserrat", Arial, sans-serif;
     font-weight: bolder;
     color: #108dfa;
@@ -150,15 +149,8 @@
     border-bottom-right-radius: 10px;
 }
 
-.headingWhyUs.slide-in {
-    opacity: 1;
-}
-
 /* ─────────────────────────────────────────────────── */
 /* Mobile: simple vertical stack layout for cards     */
-/* ─────────────────────────────────────────────────── */
-/* ─────────────────────────────────────────────────── */
-/* Mobile: uniform, spaced cards & full‑face icons    */
 /* ─────────────────────────────────────────────────── */
 @media screen and (max-width: 768px) {
     .whyUsSectionContainer {
@@ -214,4 +206,3 @@
         object-fit: contain;
     }
 }
-

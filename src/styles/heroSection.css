@@ -10,6 +10,7 @@
     background-size: auto auto;
     background-position: 80% 21%;
     border-bottom: 3px solid white;
+    z-index: 7;
 }
 
 .hero-content-wrapper {

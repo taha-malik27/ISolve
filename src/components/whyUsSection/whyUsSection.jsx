@@ -12,18 +12,28 @@ import '../../styles/whyUsSection.css';
 
 const WhyUsSection = () => {
     const headingRef = useRef(null);
+    const topLeftRef = useRef(null);
+    const topRightRef = useRef(null);
+    const bottomLeftRef = useRef(null);
+    const bottomRightRef= useRef(null);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
             entries => {
                 entries.forEach(entry => {
-                    entry.target.classList.toggle('slide-in', entry.isIntersecting);
+                    entry.target.classList.toggle('in', entry.isIntersecting);
+                    entry.target.classList.toggle('visible', entry.isIntersecting);
                 });
             },
             { root: null, rootMargin: '0px', threshold: 0.1 }
         );
 
-        if (headingRef.current) observer.observe(headingRef.current);
+        if (headingRef.current) {observer.observe(headingRef.current);}
+        if (topLeftRef.current) observer.observe(topLeftRef.current);
+        if (topRightRef.current) observer.observe(topRightRef.current);
+        if (bottomLeftRef.current) observer.observe(bottomLeftRef.current);
+        if (bottomRightRef.current) observer.observe(bottomRightRef.current);
+
         return () => observer.disconnect();
     }, []);
 
@@ -43,7 +53,7 @@ const WhyUsSection = () => {
             />
 
             {/* heading */}
-            <div ref={headingRef} className="headingWhyUs intense-blue-glow">
+            <div ref={headingRef} className="animatable fade-in slide-down headingWhyUs intense-blue-glow">
                 <span className="underline-slide">Why Choose ISolve</span>
             </div>
 
@@ -52,7 +62,8 @@ const WhyUsSection = () => {
 
                 {/* card 1 */}
                 <div
-                    className="flip-card"
+                    ref={topLeftRef}
+                    className="animatable fade-in slide-right flip-card"
                     onClick={e => e.currentTarget.classList.toggle('is-flipped')}
                     style={{ cursor: 'pointer' }}
                 >
@@ -80,7 +91,8 @@ const WhyUsSection = () => {
 
                 {/* card 2 */}
                 <div
-                    className="flip-card"
+                    ref = {topRightRef}
+                    className="animatable fade-in slide-left flip-card"
                     onClick={e => e.currentTarget.classList.toggle('is-flipped')}
                     style={{ cursor: 'pointer' }}
                 >
@@ -108,7 +120,8 @@ const WhyUsSection = () => {
 
                 {/* card 3 */}
                 <div
-                    className="flip-card"
+                    ref = {bottomLeftRef}
+                    className="animatable fade-in slide-right flip-card"
                     onClick={e => e.currentTarget.classList.toggle('is-flipped')}
                     style={{ cursor: 'pointer' }}
                 >
@@ -136,7 +149,8 @@ const WhyUsSection = () => {
 
                 {/* card 4 */}
                 <div
-                    className="flip-card"
+                    ref = {bottomRightRef}
+                    className="animatable fade-in slide-left flip-card"
                     onClick={e => e.currentTarget.classList.toggle('is-flipped')}
                     style={{ cursor: 'pointer' }}
                 >
