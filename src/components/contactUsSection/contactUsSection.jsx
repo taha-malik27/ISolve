@@ -24,9 +24,9 @@ const ContactForm = () => {
             { threshold: 0.1 }
         );
         if (headingRef.current) observer.observe(headingRef.current);
-        if (imgRef.current)     observer.observe(imgRef.current);
+        if (imgRef.current) observer.observe(imgRef.current);
         if (subRef.current) observer.observe(subRef.current);
-        if(formRef.current) observer.observe(formRef.current);
+        if (formRef.current) observer.observe(formRef.current);
 
         return () => observer.disconnect();
     }, []);

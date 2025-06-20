@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import { Navbar, Container, Nav, Button } from 'react-bootstrap';
 import '../../styles/navBar.css';
 import logo from '../../assets/logo.png';
@@ -16,6 +16,23 @@ const NavBar = () => {
     const [buttonGlow, setButtonGlow]       = useState(false);
     const [slideFraction, setSlideFraction] = useState(0);
     const isMobile = window.innerWidth < 768;
+    const navBarRef = useRef(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) =>{
+                    entry.target.classList.toggle("in", entry.isIntersecting);
+                    entry.target.classList.toggle("visible", entry.isIntersecting)}
+                );
+            },
+            {threshold: 0.1}
+        );
+        if (navBarRef.current) {observer.observe(navBarRef.current);}
+
+        return () => observer.disconnect();
+    }, []);
+
 
     useEffect(() => {
         // On mobile, disable scroll animation
@@ -52,7 +69,7 @@ const NavBar = () => {
                 pointerEvents: isMobile ? 'auto' : (slideFraction >= 1 ? 'none' : 'auto')
             }}
         >
-            <Container fluid className="px-4">
+            <Container fluid ref={navBarRef} className="animatable fade-in px-4">
 
                 {/* Logo */}
                 <div className="logo-wrapper">
@@ -61,7 +78,7 @@ const NavBar = () => {
                             src={logo}
                             alt="MySite Logo"
                             width="180"
-                            className="align-top static-glow"
+                            className="align-top static-glow-no-animation"
                             onClick={() => window.location.reload()}
                         />
                     </Navbar.Brand>
@@ -119,7 +136,7 @@ const NavBar = () => {
                             textDecoration: "none",
                         }}
                     >
-                        <span className="static-glow contactBtn">Contact</span>
+                        <span className="static-glow-no-animation contactBtn">Contact</span>
                     </Button>
                 </div>
 

@@ -5,10 +5,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.static-glow {
+.static-glow-no-animation {
   transition: filter 0.5s ease-in-out;
 }
 
-.static-glow:hover {
+.static-glow-no-animation:hover {
   filter: drop-shadow(0 0 8px white);
 }

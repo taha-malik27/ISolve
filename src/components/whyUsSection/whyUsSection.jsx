@@ -66,7 +66,7 @@ const WhyUsSection = () => {
                             />
                         </div>
                         <div className="flip-card-back">
-                            <h1 className="title static-glow fs-3 cardHeader">
+                            <h1 className="title static-glow-no-animation fs-3 cardHeader">
                                 Personalized Collaboration
                             </h1>
                             <p className="text cardBody">
@@ -94,7 +94,7 @@ const WhyUsSection = () => {
                             />
                         </div>
                         <div className="flip-card-back">
-                            <h1 className="title static-glow fs-3 cardHeader">
+                            <h1 className="title static-glow-no-animation fs-3 cardHeader">
                                 End‑to‑End Project Management & Support
                             </h1>
                             <p className="text cardBody">
@@ -122,7 +122,7 @@ const WhyUsSection = () => {
                             />
                         </div>
                         <div className="flip-card-back">
-                            <h1 className="title static-glow fs-3 cardHeader">
+                            <h1 className="title static-glow-no-animation fs-3 cardHeader">
                                 Flexible Design That Grows With You
                             </h1>
                             <p className="text cardBody">
@@ -150,7 +150,7 @@ const WhyUsSection = () => {
                             />
                         </div>
                         <div className="flip-card-back">
-                            <h1 className="title static-glow fs-3 cardHeader">
+                            <h1 className="title static-glow-no-animation fs-3 cardHeader">
                                 Quick, Safe & Inclusive
                             </h1>
                             <p className="text cardBody">

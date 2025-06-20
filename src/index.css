@@ -1,49 +1,77 @@
+/* ────────────────────────────────────────────────────────────────
+   :root Variables
+──────────────────────────────────────────────────────────────── */
+:root {
+  --ease: 0.3s ease-in-out;
+  /* default glow color */
+  --glow-color: white;
+}
+
+/* ────────────────────────────────────────────────────────────────
+   Global Resets & Transitions
+──────────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  transition: all var(--ease);
+}
+
+/* ────────────────────────────────────────────────────────────────
+   Typography
+──────────────────────────────────────────────────────────────── */
 /* Body text */
 .text {
   font-family: "Montserrat", sans-serif;
 }
 
 /* All headers */
-.title{
+.title {
   margin: 0;
   font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.static-glow {
-  /* default glow color */
-  --glow-color: white;
 
-  transition: filter 0.5s ease-in-out;
+/* ────────────────────────────────────────────────────────────────
+   Utility: Hover Glow
+──────────────────────────────────────────────────────────────── */
+.static-glow-animatable{
+  /*Special one specifically when we have glow and other transitions together*/
+  transition: opacity 3s ease, transform 2s ease, filter 0.35s ease-in-out;
 }
 
-.static-glow:hover {
-  /* use the var() here */
+.static-glow-no-animation {
+  /*Only for when you dont have any other transitions than glow*/
+  transition: filter 0.35s ease-in-out;
+}
+
+.static-glow-no-animation:hover {
   filter: drop-shadow(0 0 8px var(--glow-color));
 }
 
-:root {
-  --ease: 0.3s ease-in-out;
+/* Always-on glow */
+.glow {
+  filter: drop-shadow(0 0 12px white);
 }
 
-*, *::before, *::after {
-  transition: all var(--ease);
-}
-
+/* ────────────────────────────────────────────────────────────────
+   Utility: Hover Scale
+──────────────────────────────────────────────────────────────── */
 .hover-scale {
   display: inline-block;      /* ensures transform works */
   transition: transform 0.2s ease;
 }
+
 .hover-scale:hover {
   transform: scale(1.05);
 }
 
+/* ────────────────────────────────────────────────────────────────
+   Utility: Underline Slide on Hover
+──────────────────────────────────────────────────────────────── */
 .underline-slide {
   display: inline;                             /* stay inline so it breaks across lines */
-  background-image: linear-gradient(
-          currentColor,
-          currentColor
-  );                                            /* a 1‑pixel‑high gradient in the text color */
+  background-image: linear-gradient(currentColor, currentColor);
   background-repeat: no-repeat;
   background-position: 0 100%;                  /* pinned to the text’s bottom */
   background-size: 0% 2px;                      /* start “hidden” */
@@ -58,17 +86,46 @@
   background-size: 100% 2px;                    /* fill the full width of each line */
 }
 
-.glow{
-  filter: drop-shadow(0 0 12px white);
-}
-
-
-
+/* ────────────────────────────────────────────────────────────────
+   1 Off Animations
+──────────────────────────────────────────────────────────────── */
 @keyframes pulse {
-  0%,100% { transform: scale(1); }
-  50%     { transform: scale(1.05); }
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.05); }
 }
+
 .pulse {
   display: inline-block;
   animation: pulse 1.5s infinite ease-in-out;
 }
+
+/* ────────────────────────────────────────────────────────────────
+   Animatables (Reusable animations)
+──────────────────────────────────────────────────────────────── */
+.animatable {
+  /*If you have static-glow, use the static glow animatable, it is above this*/
+  transition: opacity 3s ease, transform 2s ease;
+}
+  /*Fade*/
+  .fade-in{
+    opacity: 0;
+  }
+  .fade-in.visible{
+    opacity: 1;
+  }
+
+  /*Slide Up Down Left Right*/
+  .slide-up   { transform: translateY(100px); }
+  .slide-down { transform: translateY(-100px); }
+  .slide-left { transform: translateX(100px); }
+  .slide-right { transform: translateX(-100px); }
+
+  .slide-up.in,
+  .slide-down.in{
+    transform: translateY(0);
+  }
+  .slide-left.in,
+  .slide-right.in{
+    transform: translateX(0);
+  }
+
