@@ -11,19 +11,20 @@
     padding-bottom: 7.5%;
     background-color: #000; /* fallback behind video */
     z-index: 5;
+    border-bottom: white 3px solid;
 }
 
 .background-video {
     position: absolute;
     top: 20%;
     left: 30%;
-    width: 120%;
-    height: auto;
-    object-fit: cover;
+    width: 115%;
+    height: 120%;
+    object-fit: fill;
     object-position: 50% 50%;
     transform: translate(-33%, -27%) scale(0.85);
     transform-origin: center center;
-    z-index: -1;
+
 }
 
 /* ─────────────────────────────────────────────────── */

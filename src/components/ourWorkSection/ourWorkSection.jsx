@@ -5,31 +5,40 @@ import '../../styles/ourWorkSection.css';
 
 const OurWorkSection = () => {
     const headingRef = useRef(null);
+    const topRef = useRef(null);
+    const middleRef = useRef(null);
+    const bottomRef = useRef(null);
+
 
     useEffect(() => {
         const observer = new IntersectionObserver(
             entries => {
                 entries.forEach(entry => {
-                    entry.target.classList.toggle('slide-in', entry.isIntersecting);
+                    entry.target.classList.toggle('in', entry.isIntersecting);
+                    entry.target.classList.toggle('visible', entry.isIntersecting);
                 });
             },
             { root: null, rootMargin: '0px', threshold: 0.1 }
         );
 
         if (headingRef.current) observer.observe(headingRef.current);
+        if (topRef.current) observer.observe(topRef.current);
+        if (middleRef.current) observer.observe(middleRef.current);
+        if (bottomRef.current) observer.observe(bottomRef.current);
+
         return () => observer.disconnect();
     }, []);
 
     return (
         <div className="ourWorkSection" id="projects">
             {/* Heading */}
-            <div ref={headingRef} className="pt-5 headingOurWork">
+            <div ref={headingRef} className="animatable fade-in slide-down pt-5 headingOurWork">
                 <span className="underline-slide glow">Our Work</span>
             </div>
 
             <Stack gap={5} className="stack">
                 {/* Left Project: IllumiYYC */}
-                <div className="leftDisplayBox">
+                <div ref= {topRef} className="animatable slide-right fade-in leftDisplayBox">
                     <div className="leftCard">
                         <div className="cardTitle glow fw-bold">IllumiYYC</div>
                         <span className="glow">
@@ -57,7 +66,7 @@ const OurWorkSection = () => {
                 </div>
 
                 {/* Right Project: HKCUTZ */}
-                <div className="rightDisplayBox">
+                <div ref={ middleRef} className="animatable fade-in slide-left rightDisplayBox">
                     <div className="iframeWrapper">
                         <iframe
                             src="https://hkcutz.info/"
@@ -85,15 +94,15 @@ const OurWorkSection = () => {
                 </div>
 
 
-                <div className="leftDisplayBox">
+                <div ref= {bottomRef} className="animatable slide-right fade-in leftDisplayBox">
                     <div className="leftCard">
                         <div className="cardTitle glow fw-bold">LEDAUTO</div>
                         <span className="glow">
-      LEDAUTO is a Surrey, BC–based automotive lighting specialist with over a decade of hands-on experience.
-      They’ve transformed 500+ cars for 500+ happy clients, offering premium services like app-controlled ambient light kits,
-      custom starlight headliners, and weather-resistant underglow installations.
-      The responsive site features interactive galleries, detailed service overviews, FAQs, and a streamlined quote request form.
-    </span>
+                          LEDAUTO is a Surrey, BC–based automotive lighting specialist with over a decade of hands-on experience.
+                          They’ve transformed 500+ cars for 500+ happy clients, offering premium services like app-controlled ambient light kits,
+                          custom starlight headliners, and weather-resistant underglow installations.
+                          The responsive site features interactive galleries, detailed service overviews, FAQs, and a streamlined quote request form.
+                        </span>
                         <div className="pt-3">
                             <a
                                 className="btn btn-outline-light"

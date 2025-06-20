@@ -2,8 +2,11 @@
     height: auto;
     background: #0c0c0c;;
     background: linear-gradient(180deg, #0c0c0c 25%, rgb(2, 50, 115) 75%);
-    border-top: white 3px solid;
+
     align-items: center;
+    z-index:4!important;
+    overflow: visible;
+
 }
 
 /* Section heading animation & styles (desktop) */
@@ -14,8 +17,11 @@
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
-    opacity: 0;
-    transition: opacity 1.5s ease-in-out;
+
+    /* — removed these two lines so the heading uses your .animatable + .fade-in /.slide-* utilities */
+    /* opacity: 0; */
+    /* transition: opacity 1.5s ease-in-out; */
+
     font-family: "Montserrat", Arial, sans-serif;
     font-weight: bolder;
     color: aliceblue;
@@ -28,9 +34,6 @@
     border-bottom-right-radius: 10px;
 }
 
-.headingOurWork.slide-in {
-    opacity: 1;
-}
 
 .stack{
     align-items: center;
@@ -67,31 +70,33 @@
     background: linear-gradient(180deg, rgb(2, 50, 115) 25%,  #0c0c0c 75%);
 }
 
-.leftCard{
-    padding:2dvh;
+/* Card zoom styling */
+.leftCard {
+    padding: 2dvh;
     margin-right: -8%;
     text-align: center;
     font-family: "Montserrat", Arial, sans-serif;
-
     height: auto;
     background: rgba(255, 255, 255, 0);
     color: aliceblue;
-    transform: scale(1.05);
     font-size: clamp(0.5rem, 0.9vw, 2rem);
+
+    /* — removed static scale so you can drop in .hover-scale on the element instead */
+    /* transform: scale(1.05); */
 }
 
-
-.rightCard{
-    padding:2dvh;
+.rightCard {
+    padding: 2dvh;
     margin-left: -8%;
     text-align: center;
     font-family: "Montserrat", Arial, sans-serif;
-
     height: auto;
     background: rgba(255, 255, 255, 0);
     color: aliceblue;
-    transform: scale(1.05);
     font-size: clamp(0.5rem, 0.9vw, 2rem);
+
+    /* — removed static scale so you can drop in .hover-scale on the element instead */
+    /* transform: scale(1.05); */
 }
 
 
