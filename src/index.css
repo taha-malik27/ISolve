@@ -116,7 +116,10 @@
 
   /*Slide Up Down Left Right*/
   .slide-up   { transform: translateY(100px); }
-  .slide-down { transform: translateY(-100px); }
+  .slide-down {
+    transform: translateY(-100px);
+    z-index: 2;
+  }
   .slide-left { transform: translateX(100px); }
   .slide-right { transform: translateX(-100px); }
 
