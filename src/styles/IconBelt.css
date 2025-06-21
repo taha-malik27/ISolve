@@ -1,0 +1,72 @@
+.icon-belt-container {
+    width: 690px;
+    padding: 16px;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid #fff;
+    border-radius: 8px;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    color: #fff;
+    /*transform:scaleX(0.95);*/
+}
+
+/* Wrapper around the scrolling belt */
+.icon-belt-wrapper {
+    position: relative;
+    width: 100%;       /* 740px from container */
+    height: 100px;     /* 48px × 2.5 scale */
+    overflow: hidden;
+    margin-bottom: 8px;
+    cursor: grab;
+}
+
+
+/* The fixed vertical pointer */
+.focus-marker {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background: rgba(255, 255, 255, 0.4);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* The flex strip of icons */
+.icon-belt {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    height: 100%;
+    scrollbar-width: none;       /* Firefox */
+    justify-content: center;
+}
+.icon-belt::-webkit-scrollbar {
+    display: none;               /* Chrome/Safari */
+}
+
+/* Each cell */
+.icon-cell {
+    flex: 0 0 auto;
+    width: 60px;                 /* adjusts cell width */
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+    transform-origin: center center;
+    will-change: transform;
+}
+
+/* Scale only the centered (active) icon */
+.icon-cell.active {
+    transform: scale(2);       /* 2.5× its normal size */
+}
+
+/* Label below belt */
+.icon-label {
+    font-size: 1rem;
+    margin-top: 4px;
+}
