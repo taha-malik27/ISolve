@@ -7,9 +7,7 @@ import logoIcon    from '../../assets/logoIconBW.png';
 const ContactForm = () => {
     const [resultMsg, setResultMsg] = useState("");
     const [msgColor, setMsgColor] = useState("");
-    const headingRef = useRef(null);
-    const imgRef     = useRef(null);
-    const subRef = useRef(null);
+    const textRef = useRef(null);
     const formRef = useRef(null);
 
 
@@ -17,15 +15,16 @@ const ContactForm = () => {
     useEffect(() => {
         const observer = new IntersectionObserver(
             (entries) => {
-                entries.forEach((entry) =>
-                    entry.target.classList.toggle("slide-in", entry.isIntersecting)
+                entries.forEach((entry) => {
+                        entry.target.classList.toggle("appear", entry.isIntersecting)
+
+                    }
                 );
             },
             { threshold: 0.1 }
         );
-        if (headingRef.current) observer.observe(headingRef.current);
-        if (imgRef.current) observer.observe(imgRef.current);
-        if (subRef.current) observer.observe(subRef.current);
+
+        if (textRef.current) {observer.observe(textRef.current);}
         if (formRef.current) observer.observe(formRef.current);
 
         return () => observer.disconnect();
@@ -65,19 +64,19 @@ const ContactForm = () => {
     return (
         <div className="form-section glow" id="contactUs">
             {/* Header column */}
-            <div className="headerBox  ">
-                <img  src={logoIcon} style={{maxWidth :  "100px"}} className="glow form-img" ref={imgRef} />
+            <div ref = {textRef} className="slideTextRight headerBox  ">
+                <img  src={logoIcon} style={{maxWidth :  "100px"}} className="glow form-img" />
 
-                <h2 ref={headingRef} className="form-header glow">
+                <h2 className="form-header glow">
                     <span className="underline-slide"> Contact Us </span>
                 </h2>
-                <p  ref={subRef} className="form-subtitle glow">
+                <p  className="form-subtitle glow">
                     Start your journey of digital excellence with ISolve today.
                 </p>
             </div>
 
             {/* Form column */}
-            <form onSubmit={handleSubmit} className="form-box glow" ref={formRef}>
+            <form ref = {formRef} onSubmit={handleSubmit} className="slideFormLeft form-box glow">
                 {/* Web3Forms hidden fields */}
                 <input type="hidden" name="access_key" value="71fff338-ae3c-423e-920f-69826bc8747e" />
                 <input

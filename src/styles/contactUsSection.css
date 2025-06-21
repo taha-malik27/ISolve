@@ -1,35 +1,30 @@
 /* ====================================================================
-   Layout Containers
+   Layout Containers (Desktop)
    ==================================================================== */
 
 /* Outer page section */
 .form-section {
     display: flex;
+    height:100dvh;
     justify-content: center;
     align-items: center;
-    gap: 5rem;
-    padding: 5dvh 0;
-
-
+    gap: 0;
+    padding: 0;
     background-color: #171717;
-
-
-
     border-top: white 3px solid;
     border-bottom: white 3px solid;
 }
 
-
-
 /* Header + subtitle wrapper */
 .headerBox {
     text-align: center;
+    margin-left: 10dvh;
     margin-right: 3dvh;
     padding: 4dvh;
     border-radius: 40px;
 }
 
-/* The two‑column form grid */
+/* The two-column form grid */
 .form-box {
     display: inline-grid;
     grid-template-columns: repeat(2, 1fr);
@@ -49,17 +44,21 @@
     align-items: start;
     max-width: 1000px;
     width: auto;
-    /*transform: scale(0.9);*/
-    opacity: 0;
-    transition: opacity 1.5s ease-in-out;
+
+    /* removed section-specific fade */
+    /* opacity: 0; */
+    /* transition: opacity 1.5s ease-in-out; */
 }
 
-.form-box.slide-in{
+/* removed in-state—use global utilities instead */
+/*
+.form-box.slide-in {
     opacity: 1;
 }
+*/
 
 /* ====================================================================
-   Field Wrappers & Labels
+   Field Wrappers & Labels (Desktop)
    ==================================================================== */
 
 /* Wraps each label+field pair */
@@ -80,15 +79,13 @@
 }
 
 /* ====================================================================
-   Inputs, Selects, Textareas
+   Inputs, Selects, Textareas (Desktop)
    ==================================================================== */
 
 /* Common styles for all inputs */
 .form-input,
 .form-select,
 .form-textarea {
-
-
     width: 100%;
     box-sizing: border-box;
     font-size: 1rem;
@@ -98,9 +95,7 @@
     font-family: "Montserrat", Arial, sans-serif;
     background-color: #212121;
     color: white;
-
 }
-
 
 input:-webkit-autofill,
 textarea:-webkit-autofill,
@@ -119,16 +114,10 @@ select:-webkit-autofill {
     opacity: 1;       /* full strength */
 }
 
-
-/* If you need to override font‑family on selects only */
+/* If you need to override font-family on selects only */
 select.form-select {
-
-    /* now your colors will show through */
     background: #212121;
     color: #fff;
-
-
-    /* make sure you have room for the arrow */
     padding-right: 2rem;
 }
 
@@ -138,19 +127,16 @@ select.form-select {
     color: #fff;
 }
 
-
 /* Make textareas taller */
 .form-textarea {
     min-height: 20dvh;
-
 }
 
 /* ====================================================================
-   Button
+   Button (Desktop)
    ==================================================================== */
 
 .form-button {
-
     border: 3px solid #ffffff;
     background: #212121;
     color: #ffffff;
@@ -165,7 +151,6 @@ select.form-select {
     font-size: 1.5rem;
     width: auto;
     margin-top: -7rem;
-
 }
 
 .form-button:hover {
@@ -182,12 +167,10 @@ select.form-select {
 }
 
 /* ====================================================================
-   Header Animation
+   Header Animation (Desktop)
    ==================================================================== */
 
 .form-header {
-    opacity: 0;
-    transition: opacity 1.5s ease-in-out;
     font-family: "Montserrat", Arial, sans-serif;
     font-weight: bolder;
     color: #ffffff;
@@ -195,43 +178,102 @@ select.form-select {
     padding: clamp(1rem, 2vh, 2rem) clamp(1.5rem, 4vw, 3rem);
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+
+    /* removed section-specific fade */
+    /* opacity: 0; */
+    /* transition: opacity 1.5s ease-in-out; */
 }
 
+/* removed in-state—use global utilities instead */
+/*
 .form-header.slide-in {
     opacity: 1;
 }
+*/
 
-.form-img{
-    opacity: 0;
-    transition: opacity 1.5s ease-in-out;
+/* ====================================================================
+   Image Animation (Desktop)
+   ==================================================================== */
+
+.form-img {
+    /* optional structural styling here… */
+
+    /* removed section-specific fade */
+    /* opacity: 0; */
+    /* transition: opacity 1.5s ease-in-out; */
 }
 
+/* removed in-state—use global utilities instead */
+/*
 .form-img.slide-in {
     opacity: 1;
 }
+*/
 
+/* ====================================================================
+   Subtitle Animation (Desktop)
+   ==================================================================== */
 
-.form-subtitle{
+.form-subtitle {
     font-family: "Montserrat", Arial, sans-serif;
     color: white;
     font-size: 1.2rem;
-    opacity: 0;
-    transition: opacity 1.5s ease-in-out;
+
+    /* removed section-specific fade */
+    /* opacity: 0; */
+    /* transition: opacity 1.5s ease-in-out; */
 }
 
+/* removed in-state—use global utilities instead */
+/*
 .form-subtitle.slide-in {
+    opacity: 1;
+}
+*/
+
+
+
+
+
+/* ====================================================================
+   Specifc grow animations adjust for final scale
+   ==================================================================== */
+
+.slideTextRight {
+                   /* so transform doesn’t break layout */
+    transform: scale(0.85) translateX(-200px);
+    opacity: 0;
+    transition:
+            transform 2.5s ease-in-out,
+            opacity   02.5s ease-in-out;
+}
+.slideTextRight.appear {
+    transform: scale(0.85) translateX(0);
+    opacity: 1;
+}
+
+.slideFormLeft{
+
+    transform: scale(0.75) translateX(200px);
+    opacity: 0;
+    transition:
+            transform 2.5s ease-in-out,
+            opacity   2.5s ease-in-out;
+}
+.slideFormLeft.appear {
+    transform: scale(0.75) translateX(0);
     opacity: 1;
 }
 
 
-/* Responsive tweak for the header */
-@media screen and (max-width: 768px) {
-    .form-header {
-        font-size: clamp(1.7rem, 5vw, 2rem);
-        padding: 1.5rem 1rem;
-    }
 
-    /* Stack header + form vertically */
+
+/* ====================================================================
+   Mobile Overrides
+   ==================================================================== */
+@media screen and (max-width: 768px) {
+
+    /* Layout Containers (Mobile) */
     .form-section {
         flex-direction: column;
         gap: 2rem;                /* smaller gap */
@@ -239,7 +281,6 @@ select.form-select {
         background-position: center 10%;
     }
 
-    /* Shrink and center the header box */
     .headerBox {
         width: 90%;               /* almost full width */
         margin: 0 auto;           /* center */
@@ -247,7 +288,7 @@ select.form-select {
         border-radius: 30px;      /* slightly smaller corners */
     }
 
-    /* Single‑column form layout */
+    /* Single-column form layout (Mobile) */
     .form-box {
         display: grid;
         grid-template-columns: 1fr; /* one column */
@@ -260,17 +301,17 @@ select.form-select {
         border-radius: 30px;        /* adjust corners */
     }
 
-    /* Make each field full width */
+    /* Field Wrappers & Labels (Mobile) */
     .form-group {
         width: 100%;
     }
 
-    /* Adjust textarea height for mobile */
+    /* Inputs, Selects, Textareas (Mobile) */
     .form-textarea {
         min-height: 25dvh;
     }
 
-    /* Full‑width, touch‑friendly button */
+    /* Button (Mobile) */
     .form-button {
         width: 100%;
         margin: 1.5rem 0 0 0; /* reset negative desktop margin */
@@ -281,5 +322,13 @@ select.form-select {
         border-radius: 30px;
         align-self: stretch; /* fill container */
     }
+
+    /* Header Animation (Mobile) */
+    .form-header {
+        font-size: clamp(1.7rem, 5vw, 2rem);
+        padding: 1.5rem 1rem;
+    }
+
+    /* No separate mobile overrides for .form-img or .form-subtitle */
 
 }

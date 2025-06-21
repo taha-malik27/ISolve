@@ -132,3 +132,16 @@
     transform: translateX(0);
   }
 
+  /*Grow Animation*/
+  .grow {
+    display: inline-block;                /* so transform doesn’t break layout */
+    transform: scale(0.1);
+    opacity: 0;
+    transition:
+            transform 0.5s ease-in-out,
+            opacity   0.5s ease-in-out;
+  }
+  .grow.appear {
+    transform: scale(1);
+    opacity: 1;
+  }
