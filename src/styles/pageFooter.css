@@ -1,4 +1,31 @@
+:root {
+    /* Angle of rotation */
+    --line-angle: 15deg;
+    /* 1 / cos(15°) ≈ 1.035276 — the factor by which the raw height
+       must be increased so its vertical projection is 100% */
+    --line-length-factor: 1.04;/*Rounding for sake of a little extra allows for better scaling*/
+    /* Horizontal inset from each edge */
+    --line-offset: 50px;
+    /* Line thickness */
+    --line-thickness: 4px;
+    /* Line color */
+    --line-color: #fff;
+}
+
+
+
 .pageFooter {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;       /* lines sit at the top of the footer */
+    justify-content: center;       /* keeps your content centered */
+    padding: 0 20px;               /* X = 20px inset from each corner */
+    background-color: #023272;
+}
+
+
+.pageFooterInfo {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -6,9 +33,10 @@
     height: auto;
     font-family: "Montserrat", Arial, sans-serif;
     text-align: center;
-    background-color: #023272;
+    /*background-color: #ec0000;*/
     padding-top: 8dvh;
     padding-bottom: 8dvh;
+    z-index: 2;
 }
 
 .bottomBorder {
@@ -51,4 +79,26 @@
 .Logo:active{
     transform: scale(0.8);
     transition: transform .1s ease-in-out;
+}
+
+.vertical-line-left,
+.vertical-line-right {
+    position: absolute;
+    top: 0;
+    width: var(--line-thickness);
+    /* scale the container so that when you rotate, its vertical
+       projection is exactly the full height */
+    height: calc(100% * var(--line-length-factor));
+    background-color: var(--line-color);
+    transform-origin: top center;
+}
+
+.vertical-line-left {
+    left: var(--line-offset);
+    transform: rotate(calc(-1 * var(--line-angle)));
+}
+
+.vertical-line-right {
+    right: var(--line-offset);
+    transform: rotate(var(--line-angle));
 }

@@ -28,33 +28,45 @@ const PageFooter = () => {
 
 
     return (
-        <div className="pageFooter glow">
-            <h1 ref={textRef}  className="animatable fade-in slide-right static-glow-no-animation headFormat">Bring your brand to life online — with power, polish, and purpose.</h1>
-            <div ref={imagesRef} className="animatable fade-in slide-left mediaBox">
-                <a href="https://www.instagram.com/isolve._/" target="_blank" rel="noopener noreferrer">
-                    <img
-                        className="Logo static-glow-no-animation"
-                        src={instaLogo}
-                        style={{width: "70%", height: "70%", margin: "2dvh"}}
-
-                    />
-                </a>
-
-                <a href="mailto:isolveyyc@gmail.com" target="_blank" rel="noopener noreferrer">
-                    <img
-                        className="Logo static-glow-no-animation"
-                        src={gmailLogo}
-                        style={{width: "70%", height: "70%", margin: "2dvh"}}
-                />
-
-                </a>
 
 
+        <div className="pageFooter">
+
+            {/* 1. Line DIV goes here */}
+            <div className="vertical-line-left glow"/>
+            <div className="vertical-line-right glow"/>
+
+            <div className="pageFooterInfo">
+                <h1 ref={textRef} className=" fade-in slide-right static-glow-animatable headFormat">Bring your brand to
+                    life online — with power, polish, and purpose.</h1>
+                <div ref={imagesRef} className="animatable fade-in slide-left mediaBox">
+                    <a href="https://www.instagram.com/isolve._/" target="_blank" rel="noopener noreferrer">
+                        <img
+                            className="Logo static-glow-no-animation"
+                            src={instaLogo}
+                            style={{width: "70%", height: "70%", margin: "2dvh"}}
+
+                        />
+                    </a>
+
+                    <a href="mailto:isolveyyc@gmail.com" target="_blank" rel="noopener noreferrer">
+                        <img
+                            className="Logo static-glow-no-animation"
+                            src={gmailLogo}
+                            style={{width: "70%", height: "70%", margin: "2dvh"}}
+                        />
+                    </a>
+                </div>
+
+                <div
+                    ref={copyRightRef} className=" fade-in slide-right static-glow-animatable bodyFormat">© 2025 ISolve
+                    | All rights reserved.
+                </div>
             </div>
-            <div ref={copyRightRef} className="animatable fade-in slide-right static-glow-no-animation bodyFormat">© 2025 ISolve | All rights reserved.</div>
 
-        </div>)
-
+            <div className="vertical-line-right"/>
+        </div>
+    )
 }
 
 

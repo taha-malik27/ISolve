@@ -40,6 +40,10 @@
   transition: opacity 3s ease, transform 2s ease, filter 0.35s ease-in-out;
 }
 
+.static-glow-animatable:hover{
+  filter: drop-shadow(0 0 8px var(--glow-color));
+}
+
 .static-glow-no-animation {
   /*Only for when you dont have any other transitions than glow*/
   transition: filter 0.35s ease-in-out;
@@ -48,6 +52,7 @@
 .static-glow-no-animation:hover {
   filter: drop-shadow(0 0 8px var(--glow-color));
 }
+
 
 /* Always-on glow */
 .glow {

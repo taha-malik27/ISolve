@@ -40,18 +40,18 @@ const HeroSection = () => {
             <NavBar/>
             <div className="hero-content-wrapper">
                 <div  className="hero-text-section">
-                    <h1 ref = {titleRef} className="static-glow-animatable animatable fade-in slide-right display-1 title text-center text-md-start">
+                    <h1 ref = {titleRef} className="static-glow-animatable fade-in slide-right display-1 title text-center text-md-start">
                         Bring Your Brand <br /> to Life Online
                     </h1>
                     <p ref = {subtitleRef} className="static-glow-animatable fade-in slide-right lead mb-4 text text-center text-md-start">
                         Professional web design, development & support under one roof
                     </p>
 
-                    <div ref = {btnRef} className="static-glow-animatable fade-in slide-right d-flex flex-column flex-sm-row gap-3 justify-content-center justify-content-md-start">
+                    <div ref = {btnRef} className="animatable fade-in slide-right d-flex flex-column flex-sm-row gap-3 justify-content-center justify-content-md-start">
                         <Button
 
                             variant="primary"
-                            className=" rounded-pill px-4 py-2 static-glow-no-animation text"
+                            className="static-glow-animatable rounded-pill px-4 py-2  text"
                             href="#contactUs"
                         >
                             <span className="text">Get a Quote</span>
@@ -59,7 +59,7 @@ const HeroSection = () => {
                         <Button
 
                             variant="dark"
-                            className=" rounded-pill px-4 py-2 text-white static-glow-no-animation text"
+                            className="static-glow-animatable rounded-pill px-4 py-2 text-white  text"
                             href="#projects"
                         >
                             <span className="text">View Our Past Work</span>
