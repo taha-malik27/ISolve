@@ -102,3 +102,13 @@
     right: var(--line-offset);
     transform: rotate(var(--line-angle));
 }
+
+/* …all your existing styles… */
+
+/* Hide the side lines on mobile */
+@media screen and (max-width: 768px) {
+    .vertical-line-left,
+    .vertical-line-right {
+        display: none;
+    }
+}

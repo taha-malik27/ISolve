@@ -177,3 +177,36 @@
     margin-bottom: 10%;   /* extra space before the belt */
 }
 
+@media screen and (max-width: 768px) {
+    /* ──────────────────────────────────────────────────────── */
+    /* MOBILE: make the right-side wrapper full-width          */
+    /* ──────────────────────────────────────────────────────── */
+    .offer-text-belt-wrapper {
+        width: 100%;              /* span the full content width */
+        margin: 2rem auto;        /* vertical gap, center horizontally */
+        padding: 0 4%;            /* match the .offer-container’s 4% side padding */
+        box-sizing: border-box;   /* include padding in that 100% width */
+    }
+
+    /* force subtitle, body & belt to fill that wrapper */
+    .offer-text-belt-wrapper .subtitle,
+    .offer-text-belt-wrapper .body,
+    .offer-text-belt-wrapper .icon-belt-format {
+        width: 100%;
+    }
+
+    /* override the belt’s fixed 740px default on mobile */
+    .offer-text-belt-wrapper .icon-belt-container {
+        width: 100% !important;
+    }
+
+    /* remove the center focus line on mobile */
+    .offer-text-belt-wrapper .focus-marker {
+        display: none;
+    }
+
+    .offer-text-belt-wrapper .icon-belt {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch; /* smooth on iOS */
+    }
+}

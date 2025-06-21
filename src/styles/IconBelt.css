@@ -7,19 +7,17 @@
     text-align: center;
     font-family: "Montserrat", sans-serif;
     color: #fff;
-    /*transform:scaleX(0.95);*/
 }
 
 /* Wrapper around the scrolling belt */
 .icon-belt-wrapper {
     position: relative;
-    width: 100%;       /* 740px from container */
-    height: 100px;     /* 48px × 2.5 scale */
+    width: 100%;
+    height: 100px;
     overflow: hidden;
     margin-bottom: 8px;
     cursor: grab;
 }
-
 
 /* The fixed vertical pointer */
 .focus-marker {
@@ -36,12 +34,12 @@
 /* The flex strip of icons */
 .icon-belt {
     display: flex;
+    justify-content: center;     /* keep icons centered in overflow area */
     overflow-x: auto;
     overflow-y: hidden;
     scroll-behavior: smooth;
     height: 100%;
     scrollbar-width: none;       /* Firefox */
-    justify-content: center;
 }
 .icon-belt::-webkit-scrollbar {
     display: none;               /* Chrome/Safari */
@@ -50,7 +48,7 @@
 /* Each cell */
 .icon-cell {
     flex: 0 0 auto;
-    width: 60px;                 /* adjusts cell width */
+    width: 60px;
     height: 100%;
     display: flex;
     align-items: center;
@@ -62,11 +60,38 @@
 
 /* Scale only the centered (active) icon */
 .icon-cell.active {
-    transform: scale(2);       /* 2.5× its normal size */
+    transform: scale(2);
 }
 
 /* Label below belt */
 .icon-label {
     font-size: 1rem;
     margin-top: 4px;
+}
+
+/* ──────────────────────────────────────────────────────── */
+/* MOBILE OVERRIDES (≤ 768px)                              */
+/* ──────────────────────────────────────────────────────── */
+@media screen and (max-width: 768px) {
+    /* full-width belt container */
+    .icon-belt-container {
+        width: 100% !important;
+        box-sizing: border-box;
+    }
+
+    /* enable native swipe on mobile */
+    .icon-belt {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* hide the center line on mobile */
+    .focus-marker {
+        display: none;
+    }
+
+    /* show tap cursor */
+    .icon-cell {
+        cursor: pointer;
+    }
 }

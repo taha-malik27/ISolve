@@ -12,7 +12,7 @@ import {
     FiCompass
 } from 'react-icons/fi';
 import '../../styles/IconBelt.css';
-import './../../index.css'
+import './../../index.css';
 
 const features = [
     { title: 'UX/UI Design',          Icon: FiPenTool     },
@@ -27,15 +27,16 @@ const features = [
     { title: 'Consulting & Strategy', Icon: FiCompass     },
 ];
 
-export default function IconBelt() {
+export default function IconBelt({ className }) {
     const containerRef = useRef(null);
     const cellWidthRef = useRef(0);
-    const offsetRef = useRef(0);
+    const offsetRef    = useRef(0);
     const [activeIndex, setActiveIndex] = useState(0);
-    const beltRef = useRef(null);
+    const beltRef      = useRef(null);
 
+    // animate-in observer (unchanged)
     useEffect(() => {
-        const observer = new IntersectionObserver(
+        const obs = new IntersectionObserver(
             entries => {
                 entries.forEach(entry => {
                     entry.target.classList.toggle("in", entry.isIntersecting);
@@ -44,64 +45,72 @@ export default function IconBelt() {
             },
             { threshold: 0.01 }
         );
-
-        if (beltRef.current)  observer.observe(beltRef.current);
-
-
-        return () => observer.disconnect();
+        if (beltRef.current) obs.observe(beltRef.current);
+        return () => obs.disconnect();
     }, []);
 
-
-
-
-    // Measure cell & container once
+    // measure cell width & center first icon
     useEffect(() => {
         const c = containerRef.current;
         const cell = c.querySelector('.icon-cell');
         if (!cell) return;
-        const cw = c.clientWidth;                     // 740 px
+        const cw = c.clientWidth;
         const w  = cell.getBoundingClientRect().width;
         cellWidthRef.current = w;
         offsetRef.current    = (cw - w) / 2;
-        // center first
-        c.scrollLeft = 0 * w - offsetRef.current;
+        c.scrollLeft = -offsetRef.current;
     }, []);
 
-    // Wheel → step activeIndex, scroll items under fixed center
-    const onWheel = useCallback(e => {
-        e.preventDefault();
-        const dir = e.deltaY > 0 ? 1 : -1;  // down→next, up→prev
-        setActiveIndex(prev => {
-            const next = Math.max(0, Math.min(features.length - 1, prev + dir));
-            if (next !== prev) {
-                const c = containerRef.current;
-                const w = cellWidthRef.current;
-                const off = offsetRef.current;
-                c.scrollTo({ left: next * w - off, behavior: 'smooth' });
-            }
-            return next;
+    // helper to scroll a given index into center
+    const scrollToIndex = useCallback(idx => {
+        const c = containerRef.current;
+        c.scrollTo({
+            left: idx * cellWidthRef.current - offsetRef.current,
+            behavior: 'smooth'
         });
     }, []);
 
-    // Attach wheel only on the belt
+    // wheel handler (desktop only)
+    const onWheel = useCallback(e => {
+        e.preventDefault();
+        const dir = e.deltaY > 0 ? 1 : -1;
+        setActiveIndex(prev => {
+            const next = Math.min(features.length - 1, Math.max(0, prev + dir));
+            if (next !== prev) scrollToIndex(next);
+            return next;
+        });
+    }, [scrollToIndex]);
+
     useEffect(() => {
         const el = containerRef.current;
-        el.addEventListener('wheel', onWheel, { passive: false });
-        return () => el.removeEventListener('wheel', onWheel);
+        if (window.matchMedia('(min-width:769px)').matches) {
+            el.addEventListener('wheel', onWheel, { passive: false });
+            return () => el.removeEventListener('wheel', onWheel);
+        }
     }, [onWheel]);
 
     return (
-        <div ref = {beltRef} className="icon-belt-container animatable fade-in slide-left">
+        <div
+            ref={beltRef}
+            className={`icon-belt-container ${className || ""} animatable fade-in slide-left`}
+        >
             <div className="icon-belt-wrapper">
-                {/* fixed width 740px; fixed height for 2.5× scaled icons */}
                 <div className="icon-belt" ref={containerRef}>
                     {features.map(({ title, Icon }, i) => (
                         <div
                             key={i}
                             className={`icon-cell${i === activeIndex ? ' active' : ''}`}
                             title={title}
+                            onClick={() => {
+                                // always update the “active” state so the tapped icon scales
+                                setActiveIndex(i);
+                                // but only scroll the belt on desktop—never on mobile
+                                if (window.matchMedia('(min-width: 769px)').matches) {
+                                    scrollToIndex(i);
+                                }
+                            }}
                         >
-                            <Icon color="#fff" size={"23px"} />
+                            <Icon color="#fff" size="23px" />
                         </div>
                     ))}
                 </div>
