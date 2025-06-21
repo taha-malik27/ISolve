@@ -20,6 +20,7 @@
 /* Header + subtitle wrapper */
 .headerBox {
     text-align: center;
+    width: 41%;
     margin-left: 10dvh;
     margin-right: 3dvh;
     padding: 4dvh;
