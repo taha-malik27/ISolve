@@ -22,6 +22,8 @@
     justify-content: center;       /* keeps your content centered */
     padding: 0 20px;               /* X = 20px inset from each corner */
     background-color: #023272;
+    overflow: hidden;
+
 }
 
 
@@ -36,13 +38,13 @@
     /*background-color: #ec0000;*/
     padding-top: 8dvh;
     padding-bottom: 8dvh;
-    z-index: 2;
 }
 
 .bottomBorder {
     background-color: aliceblue;
     height: 2px;
     border-top: aliceblue solid 4px;
+    overflow: hidden;
 }
 
 

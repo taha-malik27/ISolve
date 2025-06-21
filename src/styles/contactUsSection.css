@@ -4,15 +4,17 @@
 
 /* Outer page section */
 .form-section {
+    position: relative;
     display: flex;
-    height:100dvh;
+    height:105dvh;
     justify-content: center;
     align-items: center;
     gap: 0;
     padding: 0;
     background-color: #171717;
-    border-top: white 3px solid;
+    z-index: 3!important;
     border-bottom: white 3px solid;
+    overflow: visible;
 }
 
 /* Header + subtitle wrapper */
@@ -267,68 +269,90 @@ select.form-select {
 
 
 
-
-/* ====================================================================
-   Mobile Overrides
-   ==================================================================== */
 @media screen and (max-width: 768px) {
 
-    /* Layout Containers (Mobile) */
+    /* Make section height auto so it scrolls naturally */
     .form-section {
         flex-direction: column;
-        gap: 2rem;                /* smaller gap */
-        padding: 2dvh 1rem;       /* tighter padding */
-        background-position: center 10%;
+        gap: 1.5rem;
+        padding: 2dvh 1rem;
+        height: auto;
+        border-bottom: white 3px solid;
     }
 
+    /* Header box full width with comfortable padding */
     .headerBox {
-        width: 90%;               /* almost full width */
-        margin: 0 auto;           /* center */
-        padding: 3dvh 2vw;        /* adjust vertical/horizontal padding */
-        border-radius: 30px;      /* slightly smaller corners */
+        width: 95%;
+        margin: 0 auto;
+        padding: 2dvh 2vw;
+        border-radius: 20px;
     }
 
-    /* Single-column form layout (Mobile) */
+    /* Always show heading/text immediately and simplify transform */
+    .slideTextRight,
+    .slideFormLeft {
+        transform: none !important;
+        opacity: 1 !important;
+        transition: none !important;
+    }
+
+    /* Single-column form, full width, tighter gaps */
     .form-box {
         display: grid;
-        grid-template-columns: 1fr; /* one column */
-        gap: 1.5rem;                /* tighter gap */
-        padding: 2rem 1rem;         /* reduced padding */
-        margin: 2dvh auto;          /* center horizontally */
-        transform: none;            /* remove desktop scale */
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 1.5rem 1rem;
+        margin: 1.5dvh auto;
         width: 100%;
         max-width: 100%;
-        border-radius: 30px;        /* adjust corners */
+        border-radius: 20px;
+        transform: none !important;
+        opacity: 1 !important;
     }
 
-    /* Field Wrappers & Labels (Mobile) */
+    /* Form groups run full width */
     .form-group {
         width: 100%;
+        margin-bottom: 1rem;
     }
 
-    /* Inputs, Selects, Textareas (Mobile) */
+    /* Inputs/selects/textareas: larger tappable area */
+    .form-input,
+    .form-select,
     .form-textarea {
-        min-height: 25dvh;
+        padding: 1rem;
+        font-size: 1.1rem;
     }
 
-    /* Button (Mobile) */
+    /* Textarea extra height for comfort */
+    .form-textarea {
+        min-height: 30dvh;
+    }
+
+    /* Button spans full width, clear margin, easy tap target */
     .form-button {
         width: 100%;
-        margin: 1.5rem 0 0 0; /* reset negative desktop margin */
-        padding: 1rem;       /* more tappable area */
-        font-size: 1.2rem;   /* slightly smaller text */
-        height: auto;        /* remove fixed desktop height */
-        transform: none;     /* remove desktop active scale */
+        margin: 2rem 0 0 0;
+        padding: 1.2rem;
+        font-size: 1.3rem;
         border-radius: 30px;
-        align-self: stretch; /* fill container */
     }
 
-    /* Header Animation (Mobile) */
+    /* Feedback message stands out nicely */
+    .form-result {
+        font-size: 1rem;
+        margin-top: 1rem;
+        text-align: center;
+        line-height: 1.4;
+    }
+
+    /* Subtitle and headers slightly larger for readability */
     .form-header {
-        font-size: clamp(1.7rem, 5vw, 2rem);
-        padding: 1.5rem 1rem;
+        font-size: clamp(1.8rem, 6vw, 2.4rem);
+        padding: 1rem;
     }
-
-    /* No separate mobile overrides for .form-img or .form-subtitle */
+    .form-subtitle {
+        font-size: 1.3rem;
+    }
 
 }

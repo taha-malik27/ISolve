@@ -62,7 +62,7 @@ const ContactForm = () => {
     };
 
     return (
-        <div className="form-section glow" id="contactUs">
+        <div className="form-section glow-bottom" id="contactUs">
             {/* Header column */}
             <div ref = {textRef} className="slideTextRight headerBox  ">
                 <img  src={logoIcon} style={{maxWidth :  "100px"}} className="glow form-img" />
@@ -76,7 +76,7 @@ const ContactForm = () => {
             </div>
 
             {/* Form column */}
-            <form ref = {formRef} onSubmit={handleSubmit} className="slideFormLeft form-box glow">
+            <form ref = {formRef} onSubmit={handleSubmit} className="slideFormLeft form-box weak-glow">
                 {/* Web3Forms hidden fields */}
                 <input type="hidden" name="access_key" value="71fff338-ae3c-423e-920f-69826bc8747e" />
                 <input

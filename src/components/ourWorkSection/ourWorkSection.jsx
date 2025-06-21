@@ -30,7 +30,7 @@ const OurWorkSection = () => {
     }, []);
 
     return (
-        <div className="ourWorkSection" id="projects">
+        <div className="ourWorkSection glow" id="projects">
             {/* Heading */}
             <div ref={headingRef} className="animatable fade-in slide-down pt-5 headingOurWork">
                 <span className="underline-slide glow">Our Work</span>

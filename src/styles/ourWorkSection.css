@@ -1,4 +1,5 @@
 .ourWorkSection {
+    position: relative;
     height: auto;
     background: #0c0c0c;;
     background: linear-gradient(180deg, #0c0c0c 25%, rgb(2, 50, 115) 75%);
@@ -6,7 +7,7 @@
     align-items: center;
     z-index:4!important;
     overflow: visible;
-
+    border-bottom: white 3px solid;
 }
 
 /* Section heading animation & styles (desktop) */

@@ -27,7 +27,7 @@ const PageFooter = () => {
     }, []);
 
     return (
-        <div className="pageFooter">
+        <div className="pageFooter ">
 
             {/* vertical lines */}
             <div className="vertical-line-left glow" />
