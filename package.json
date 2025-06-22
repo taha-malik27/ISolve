@@ -2,7 +2,7 @@
   "name": "isolve",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://isolve.dev",
+  "homepage": "https://isolve.info",
 
   "dependencies": {
     "@fontsource/montserrat": "^5.2.5",
