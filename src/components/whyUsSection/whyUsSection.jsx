@@ -23,9 +23,10 @@ const WhyUsSection = () => {
                 entries.forEach(entry => {
                     entry.target.classList.toggle('in', entry.isIntersecting);
                     entry.target.classList.toggle('visible', entry.isIntersecting);
+                    entry.target.classList.toggle('appear', entry.isIntersecting);
                 });
             },
-            { root: null, rootMargin: '0px', threshold: 0.1 }
+            { root: null, rootMargin: '0px', threshold: 0.00001 }
         );
 
         if (headingRef.current) {observer.observe(headingRef.current);}
@@ -39,6 +40,7 @@ const WhyUsSection = () => {
 
     const imgStyle  = { maxWidth: '350px', maxHeight: '350px' };
     const imgStyle2 = { maxWidth: '320px', maxHeight: '320px' };
+    const imgStyle3 = { maxWidth: '280px', maxHeight: '280px' };
 
     return (
         <div className="whyUsSectionContainer h-auto glow">
@@ -53,7 +55,7 @@ const WhyUsSection = () => {
             />
 
             {/* heading */}
-            <div ref={headingRef} className="animatable fade-in slide-down headingWhyUs intense-blue-glow">
+            <div ref={headingRef} className="slideHeadingDown headingWhyUs intense-blue-glow">
                 <span className="underline-slide">Why Choose ISolve</span>
             </div>
 
@@ -159,7 +161,7 @@ const WhyUsSection = () => {
                             <img
                                 src={shieldIcon}
                                 alt="Security & SEO"
-                                style={imgStyle2}
+                                style={imgStyle3}
                                 className="intense-blue-glow"
                             />
                         </div>

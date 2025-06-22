@@ -16,6 +16,7 @@ const OfferSection = () => {
                 entries.forEach(entry => {
                     entry.target.classList.toggle("in", entry.isIntersecting);
                     entry.target.classList.toggle("visible", entry.isIntersecting);
+                    entry.target.classList.toggle("appear",entry.isIntersecting);
                 });
             },
             { threshold: 0.01 }
@@ -33,7 +34,7 @@ const OfferSection = () => {
         <div className="offer-container glow" id="about">
             <div
                 ref={headingRef}
-                className="headingOffer animatable fade-in slide-down"
+                className="headingOffer slideHeadingDown"
             >
                 <span className="underline-slide">What We Do</span>
             </div>

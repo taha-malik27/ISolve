@@ -157,6 +157,11 @@
         gap: 1rem;
     }
 
+    .rightDisplayBox{
+        .iframeWrapper { order: 2; }
+        .rightCard     { order: 1; }
+    }
+
     .leftCard,
     .rightCard {
         width: 100%;

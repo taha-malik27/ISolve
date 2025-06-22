@@ -68,29 +68,20 @@
     font-size: 1rem;
     margin-top: 4px;
 }
-
-/* ──────────────────────────────────────────────────────── */
-/* MOBILE OVERRIDES (≤ 768px)                              */
-/* ──────────────────────────────────────────────────────── */
+/* MOBILE OVERRIDES (≤ 768px) */
 @media screen and (max-width: 768px) {
-    /* full-width belt container */
     .icon-belt-container {
         width: 100% !important;
         box-sizing: border-box;
+        transform: none !important; /* disable zoom‐scaling on mobile */
     }
-
-    /* enable native swipe on mobile */
     .icon-belt {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
     }
-
-    /* hide the center line on mobile */
     .focus-marker {
         display: none;
     }
-
-    /* show tap cursor */
     .icon-cell {
         cursor: pointer;
     }

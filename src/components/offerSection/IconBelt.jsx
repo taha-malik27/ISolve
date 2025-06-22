@@ -1,15 +1,7 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import {
-    FiPenTool,
-    FiSmartphone,
-    FiCodesandbox,
-    FiServer,
-    FiZap,
-    FiBarChart2,
-    FiShield,
-    FiHardDrive,
-    FiHeadphones,
-    FiCompass
+    FiPenTool, FiSmartphone, FiCodesandbox, FiServer, FiZap,
+    FiBarChart2, FiShield, FiHardDrive, FiHeadphones, FiCompass
 } from 'react-icons/fi';
 import '../../styles/IconBelt.css';
 import './../../index.css';
@@ -28,13 +20,14 @@ const features = [
 ];
 
 export default function IconBelt({ className }) {
-    const containerRef = useRef(null);
+    const scaleRef     = useRef(null);      // for zoom‐scale only
+    const beltRef      = useRef(null);      // for slide‐in only
+    const containerRef = useRef(null);      // for scroll logic
     const cellWidthRef = useRef(0);
     const offsetRef    = useRef(0);
     const [activeIndex, setActiveIndex] = useState(0);
-    const beltRef      = useRef(null);
 
-    // animate-in observer (unchanged)
+    // 1) Slide-in observer on beltRef
     useEffect(() => {
         const obs = new IntersectionObserver(
             entries => {
@@ -49,7 +42,26 @@ export default function IconBelt({ className }) {
         return () => obs.disconnect();
     }, []);
 
-    // measure cell width & center first icon
+    // 2) Zoom-aware scaling on scaleRef (desktop only)
+    useEffect(() => {
+        const mql = window.matchMedia('(min-width:769px)');
+        function updateScale() {
+            if (!scaleRef.current) return;
+            if (!mql.matches) {
+                scaleRef.current.style.transform = '';
+                return;
+            }
+            const ratio = window.devicePixelRatio || 1;
+            const scale = ratio > 1 ? 1 / ratio : 1;
+            scaleRef.current.style.transform       = `scale(${scale})`;
+            scaleRef.current.style.transformOrigin = 'top center';
+        }
+        window.addEventListener('resize', updateScale);
+        updateScale();
+        return () => window.removeEventListener('resize', updateScale);
+    }, []);
+
+    // 3) Measure & center first icon (unchanged)
     useEffect(() => {
         const c = containerRef.current;
         const cell = c.querySelector('.icon-cell');
@@ -61,7 +73,7 @@ export default function IconBelt({ className }) {
         c.scrollLeft = -offsetRef.current;
     }, []);
 
-    // helper to scroll a given index into center
+    // 4) scroll helper + wheel (unchanged)
     const scrollToIndex = useCallback(idx => {
         const c = containerRef.current;
         c.scrollTo({
@@ -69,8 +81,6 @@ export default function IconBelt({ className }) {
             behavior: 'smooth'
         });
     }, []);
-
-    // wheel handler (desktop only)
     const onWheel = useCallback(e => {
         e.preventDefault();
         const dir = e.deltaY > 0 ? 1 : -1;
@@ -80,7 +90,6 @@ export default function IconBelt({ className }) {
             return next;
         });
     }, [scrollToIndex]);
-
     useEffect(() => {
         const el = containerRef.current;
         if (window.matchMedia('(min-width:769px)').matches) {
@@ -89,35 +98,37 @@ export default function IconBelt({ className }) {
         }
     }, [onWheel]);
 
+    // 5) Render
     return (
-        <div
-            ref={beltRef}
-            className={`icon-belt-container ${className || ""} animatable fade-in slide-left`}
-        >
-            <div className="icon-belt-wrapper">
-                <div className="icon-belt" ref={containerRef}>
-                    {features.map(({ title, Icon }, i) => (
-                        <div
-                            key={i}
-                            className={`icon-cell${i === activeIndex ? ' active' : ''}`}
-                            title={title}
-                            onClick={() => {
-                                // always update the “active” state so the tapped icon scales
-                                setActiveIndex(i);
-                                // but only scroll the belt on desktop—never on mobile
-                                if (window.matchMedia('(min-width: 769px)').matches) {
-                                    scrollToIndex(i);
-                                }
-                            }}
-                        >
-                            <Icon color="#fff" size="23px" />
-                        </div>
-                    ))}
+        <div ref={scaleRef}
+             className={`icon-belt-container ${className||''}`}>
+            {/* Slide-in wrapper */}
+            <div ref={beltRef}
+                 className="animatable fade-in slide-left">
+
+                <div className="icon-belt-wrapper">
+                    <div className="icon-belt" ref={containerRef}>
+                        {features.map(({ title, Icon }, i) => (
+                            <div
+                                key={i}
+                                className={`icon-cell${i===activeIndex?' active':''}`}
+                                title={title}
+                                onClick={() => {
+                                    setActiveIndex(i);
+                                    if (window.matchMedia('(min-width:769px)').matches) {
+                                        scrollToIndex(i);
+                                    }
+                                }}>
+                                <Icon color="#fff" size="23px" />
+                            </div>
+                        ))}
+                    </div>
+                    <div className="focus-marker"/>
                 </div>
-                <div className="focus-marker" />
-            </div>
-            <div className="icon-label">
-                {features[activeIndex].title}
+
+                <div className="icon-label">
+                    {features[activeIndex].title}
+                </div>
             </div>
         </div>
     );

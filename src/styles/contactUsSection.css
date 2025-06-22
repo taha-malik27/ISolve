@@ -6,10 +6,11 @@
 .form-section {
     position: relative;
     display: flex;
-    height:105dvh;
+    flex-direction: row;
+    height:fit-content;
     justify-content: center;
     align-items: center;
-    gap: 0;
+
     padding: 0;
     background-color: #171717;
     z-index: 3!important;
@@ -17,12 +18,14 @@
     overflow: visible;
 }
 
+.form-scale-wrapper{
+    transition: transform 0.1s ease-out;
+}
+
+
 /* Header + subtitle wrapper */
 .headerBox {
     text-align: center;
-    width: 41%;
-    margin-left: 10dvh;
-    margin-right: 3dvh;
     padding: 4dvh;
     border-radius: 40px;
 }
@@ -242,29 +245,29 @@ select.form-select {
    Specifc grow animations adjust for final scale
    ==================================================================== */
 
-.slideTextRight {
+.slideTextDown {
                    /* so transform doesn’t break layout */
-    transform: scale(0.85) translateX(-200px);
+    transform:  translateY(-250px);
     opacity: 0;
     transition:
-            transform 2.5s ease-in-out,
-            opacity   02.5s ease-in-out;
+            transform 2s ease-in-out,
+            opacity   2.5s ease-in-out;
 }
-.slideTextRight.appear {
-    transform: scale(0.85) translateX(0);
+.slideTextDown.appear {
+    transform:  translateY(0);
     opacity: 1;
 }
 
-.slideFormLeft{
+.slideFormUp{
 
-    transform: scale(0.75) translateX(200px);
+    transform:  translateY(50px);
     opacity: 0;
     transition:
-            transform 2.5s ease-in-out,
+            transform 2s ease-in-out,
             opacity   2.5s ease-in-out;
 }
-.slideFormLeft.appear {
-    transform: scale(0.75) translateX(0);
+.slideFormUp.appear {
+    transform:  translateY(0);
     opacity: 1;
 }
 
@@ -290,8 +293,8 @@ select.form-select {
     }
 
     /* Always show heading/text immediately and simplify transform */
-    .slideTextRight,
-    .slideFormLeft {
+    .slideTextDown,
+    .slideFormUp {
         transform: none !important;
         opacity: 1 !important;
         transition: none !important;
@@ -356,4 +359,52 @@ select.form-select {
         font-size: 1.3rem;
     }
 
+}
+
+
+:root {
+    /* Angle of rotation */
+    --line-angleCUS: 0deg;
+    /* 1 / cos(15°) ≈ 1.035276 — the factor by which the raw height
+       must be increased so its vertical projection is 100% */
+    --line-length-factorCUS: 1.0;/*Rounding for sake of a little extra allows for better scaling*/
+    /* Horizontal inset from each edge */
+    --line-offsetCUS: 50px;
+    /* Line thickness */
+    --line-thicknessCUS: 4px;
+    /* Line color */
+    --line-colorCUS: #fff;
+}
+
+
+.vertical-line-left-CUS,
+.vertical-line-right-CUS {
+    position: absolute;
+    top: 0;
+    width: var(--line-thicknessCUS);
+    /* scale the container so that when you rotate, its vertical
+       projection is exactly the full height */
+    height: calc(100% * var(--line-length-factorCUS));
+    background-color: var(--line-colorCUS);
+    transform-origin: top center;
+}
+
+.vertical-line-left-CUS {
+    left: var(--line-offsetCUS);
+    transform:  rotate(calc(-1 * var(--line-angleCUS)));
+}
+
+.vertical-line-right-CUS {
+    right: var(--line-offsetCUS);
+    transform: rotate(var(--line-angleCUS));
+}
+
+/* …all your existing styles… */
+
+/* Hide the side lines on mobile */
+@media screen and (max-width: 768px) {
+    .vertical-line-left-CUS,
+    .vertical-line-right-CUS{
+        display: none;
+    }
 }

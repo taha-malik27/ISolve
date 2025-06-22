@@ -95,7 +95,7 @@ html, body {
   background-image: linear-gradient(currentColor, currentColor);
   background-repeat: no-repeat;
   background-position: 0 100%;                  /* pinned to the text’s bottom */
-  background-size: 0% 2px;                      /* start “hidden” */
+  background-size: 0 2px;                      /* start “hidden” */
   transition: background-size 0.3s ease;        /* animate expansion */
 
   /* ensure each broken line gets its own background box */
@@ -153,7 +153,21 @@ html, body {
     transform: translateX(0);
   }
 
-  /*Grow Animation*/
+
+.slideHeadingDown {
+  /* so transform doesn’t break layout */
+  transform:  translateY(-50px);
+  opacity: 0;
+  transition:
+          transform 2s ease-in-out,
+          opacity   2.5s ease-in-out;
+}
+.slideHeadingDown.appear {
+  transform:  translateY(0);
+  opacity: 1;
+}
+
+/*Grow Animation*/
   .grow {
     display: inline-block;                /* so transform doesn’t break layout */
     transform: scale(0.1);
