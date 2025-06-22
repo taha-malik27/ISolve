@@ -103,10 +103,10 @@ const NavBar = () => {
                             <Nav className="d-flex align-items-center flex-column flex-lg-row">
                                 <Nav.Link
                                     onClick={() => window.location.reload()}
-                                    className="text-white px-3 static-glow text"
+                                    className="text-white px-3 static-glow-no-animation text"
                                 >Home</Nav.Link>
-                                <Nav.Link href="#about" className="text-white px-3 static-glow text">About</Nav.Link>
-                                <Nav.Link href="#projects" className="text-white px-3 static-glow text">Our Projects</Nav.Link>
+                                <Nav.Link href="#about" className="text-white px-3 static-glow-no-animation text">About</Nav.Link>
+                                <Nav.Link href="#projects" className="text-white px-3 static-glow-no-animation text">Our Projects</Nav.Link>
                             </Nav>
                         </div>
                     </div>
