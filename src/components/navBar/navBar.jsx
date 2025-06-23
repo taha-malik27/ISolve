@@ -102,7 +102,9 @@ const NavBar = () => {
                         >
                             <Nav className="d-flex align-items-center flex-column flex-lg-row">
                                 <Nav.Link
-                                    onClick={() => window.location.reload()}
+                                    onClick={() => {
+                                        window.location.href = '/';
+                                    }}
                                     className="text-white px-3 static-glow-no-animation text"
                                 >Home</Nav.Link>
                                 <Nav.Link href="#about" className="text-white px-3 static-glow-no-animation text">About</Nav.Link>
