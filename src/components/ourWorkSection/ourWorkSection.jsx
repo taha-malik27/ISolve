@@ -98,11 +98,7 @@ const OurWorkSection = () => {
                     <div className="leftCard">
                         <div className="cardTitle glow fw-bold">LEDAUTO</div>
                         <span className="glow">
-                          LEDAUTO is a Surrey, BC–based automotive lighting specialist with over a decade of hands-on experience.
-                          They’ve transformed 500+ cars for 500+ happy clients, offering premium services like app-controlled ambient light kits,
-                          custom starlight headliners, and weather-resistant underglow installations.
-                          The responsive site features interactive galleries, detailed service overviews, FAQs, and a streamlined quote request form.
-                        </span>
+                         LEDAUTO is a Surrey, BC–based automotive lighting specialist with 10+ years of experience and over 500 transformed vehicles. Services include app-controlled ambient lighting, starlight headliners, and weatherproof underglow kits. The site features interactive galleries, service details, FAQs, and a quick quote form.                        </span>
                         <div className="pt-3">
                             <a
                                 className="btn btn-outline-light"

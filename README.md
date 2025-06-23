@@ -2,6 +2,14 @@
 
 ISolve is the real website for a web design side hustle created by two friends. It's a single-page React app with animated sections, an embedded portfolio, and a contact form powered by Web3Forms.
 
+## Our Projects
+
+Explore a few of the responsive websites built with React, Tailwind CSS, and modern web tools:
+
+- [HK Cutz](https://hkcutz.info/)
+- [LEDAUTO](https://ledauto.info/)
+- [IllumiYYC](https://illumiyyc.com/)
+
 ## Features
 
 - **React + Bootstrap** – the app is built with [Create React App](https://create-react-app.dev/) and uses React Bootstrap components.
