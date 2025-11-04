@@ -7,8 +7,11 @@ ISolve is the real website for a web design side hustle created by two friends. 
 Explore a few of the responsive websites built with React, Tailwind CSS, and modern web tools:
 
 - [HK Cutz](https://hkcutz.info/)
+    - [GitHub Repo](https://github.com/taha-malik27/hkcutz)
 - [LEDAUTO](https://ledauto.info/)
+    - [GitHub Repo](https://github.com/taha-malik27/ledautoweb)
 - [IllumiYYC](https://illumiyyc.com/)
+    - [GitHub Repo](https://github.com/taha-malik27/Illumiyyc)
 
 ## Features
 
