@@ -1,0 +1,15 @@
+useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                        entry.target.classList.toggle("in", entry.isIntersecting)
+                        entry.target.classList.toggle("visible", entry.isIntersecting)
+                    }
+                );
+            },
+            { threshold: 0.1 }
+        );
+
+
+        return () => observer.disconnect();
+    }, []);
